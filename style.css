@@ -18,7 +18,7 @@ body{
     overflow:hidden;
 
     display:flex;
-    justify-content:center;
+    justify-content:center;7
     align-items:center;
 
     background:black;
@@ -729,11 +729,12 @@ body{
 
     border-radius:50%;
 
-    
     z-index:500;
 
     cursor:pointer;
 }
+
+/* ================= DAY AUDIO ===================== */
 
 /* BULLE 1 */
 
@@ -751,7 +752,25 @@ body{
     top:40%;
 }
 
-/* BARRES PROGRESSION */
+/* ================= NIGHT AUDIO =================== */
+
+/* BULLE 1 */
+
+.night-audio-1{
+
+    left:35%;
+    top:22%;
+}
+
+/* BULLE 2 */
+
+.night-audio-2{
+
+    left:35.5%;
+    top:41.5%;
+}
+
+/* ================= BARRES ======================== */
 
 .progress-bar{
 
@@ -770,9 +789,10 @@ body{
 
     pointer-events:auto;
 
-cursor:pointer;
-
+    cursor:pointer;
 }
+
+/* DAY */
 
 .progress-1{
 
@@ -786,69 +806,7 @@ cursor:pointer;
     top:55%;
 }
 
-/* REMPLISSAGE */
-
-.progress-fill{
-
-    width:0%;
-
-    height:100%;
-
-    background:white;
-
-    pointer-events:none;
-}
-
-/* VOLUME */
-
-.volume-bar{
-
-    position:absolute;
-
-    width:10%;
-
-    z-index:500;
-
-    opacity:0.45;
-}
-
-/* VOLUME 1 */
-
-.volume-1{
-
-    left:73%;
-    top: 35.5%;
-}
-
-/* VOLUME 2 */
-
-.volume-2{
-
-    left:73%;
-    top:54.5%;
-}
-/* ================================================= */
-/* ================= NIGHT AUDIO =================== */
-/* ================================================= */
-
-/* BULLE 1 */
-
-.night-audio-1{
-
-    left:35%;
-    top:22%;
-}
-
-/* BULLE 2 */
-
-.night-audio-2{
-
-    left:35,5%;
-    top:41.5%;
-
-}
-
-/* BARRES PROGRESSION */
+/* NIGHT */
 
 .night-progress-1{
 
@@ -862,7 +820,47 @@ cursor:pointer;
     top:55%;
 }
 
-/* VOLUME */
+/* ================= REMPLISSAGE =================== */
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:white;
+
+    pointer-events:none;
+}
+
+/* ================= VOLUME ======================== */
+
+.volume-bar{
+
+    position:absolute;
+
+    width:10%;
+
+    z-index:500;
+
+    opacity:0.45;
+}
+
+/* DAY */
+
+.volume-1{
+
+    left:73%;
+    top:35.5%;
+}
+
+.volume-2{
+
+    left:73%;
+    top:54.5%;
+}
+
+/* NIGHT */
 
 .night-volume-1{
 
@@ -875,46 +873,10 @@ cursor:pointer;
     left:73%;
     top:54.5%;
 }
-/* ================= PLAY ICON ================= */
 
-.demo-bubble{
+/* ================= PLAY ICON ===================== */
 
-    display:flex;
+.play-icon{
 
-    justify-content:center;
-    align-items:center;
-
-    color:white;
-
-    font-size:2.2rem;
-
-    font-family:sans-serif;
-
-    user-select:none;
-}
-
-/* PLAY */
-
-.demo-bubble::after{
-
-    content:"▶";
-
-    opacity:0.75;
-
-    transform:
-    translateX(4px)
-    translateY(-2px);
-}
-
-/* PAUSE */
-
-.demo-bubble.playing::after{
-
-    content:"⏸";
-
-    opacity:0.9;
-
-    transform:
-    translateX(1px)
-    translateY(-2px);
+    display:none;
 }
