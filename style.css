@@ -95,13 +95,24 @@ body{
 
 
 
-/* ================= MOBILE ================= */
 @media (max-width:768px){
+
+    body{
+
+        overflow:hidden;
+
+        background:black;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
 
     .page-container{
 
         position:relative;
 
+        width:100vw;
         height:100vh;
 
         display:flex;
@@ -113,8 +124,13 @@ body{
 
     .page-image{
 
-        height:100vh;
         width:auto;
+
+        max-width:100vw;
+
+        height:auto;
+
+        max-height:100vh;
 
         display:block;
 
