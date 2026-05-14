@@ -98,11 +98,18 @@ body{
 /* ================= MOBILE ================= */
 @media (max-width:768px){
 
+    body{
+
+        min-height:100dvh;
+
+        overflow:hidden;
+    }
+
     .page-container{
 
         position:relative;
 
-        height:100vh;
+        height:100dvh;
 
         display:flex;
         justify-content:center;
@@ -113,7 +120,7 @@ body{
 
     .page-image{
 
-        height:100vh;
+        height:100dvh;
         width:auto;
 
         object-fit:contain;
@@ -121,7 +128,134 @@ body{
         display:block;
     }
 
+    /* ================= HOME ================= */
+
+    .home-day{
+
+        top:34%;
+    }
+
+    .home-night{
+
+        top:34%;
+    }
+
+    .home-booking{
+
+        top:54%;
+    }
+
+    /* ================= DAY ================= */
+
+    .day-night{
+
+        top:82%;
+        right:27%;
+    }
+
+    .day-booking{
+
+        top:82%;
+        left:74%;
+    }
+
+    /* ================= NIGHT ================= */
+
+    .night-day{
+
+        top:82%;
+        left:50%;
+    }
+
+    .night-booking{
+
+        top:82%;
+        right:4%;
+    }
+
+    /* ================= AUDIO ================= */
+
+    .audio-zone-1{
+
+        top:20%;
+    }
+
+    .audio-zone-2{
+
+        top:38%;
+    }
+
+    .night-audio-1{
+
+        top:20%;
+    }
+
+    .night-audio-2{
+
+        top:39%;
+    }
+
+    /* ================= PROGRESS ================= */
+
+    .progress-1{
+
+        top:34%;
+    }
+
+    .progress-2{
+
+        top:52%;
+    }
+
+    .night-progress-1{
+
+        top:34%;
+    }
+
+    .night-progress-2{
+
+        top:53%;
+    }
+
+    /* ================= VOLUME ================= */
+
+    .volume-1{
+
+        top:33.5%;
+    }
+
+    .volume-2{
+
+        top:51.5%;
+    }
+
+    .night-volume-1{
+
+        top:33.5%;
+    }
+
+    .night-volume-2{
+
+        top:52.5%;
+    }
+
+    /* ================= GALLERY ================= */
+
+    .thumb1,
+    .thumb2,
+    .thumb3{
+
+        top:57%;
+    }
+
+    .night-thumb1,
+    .night-thumb2,
+    .night-thumb3{
+
+        top:58%;
+    }
 }
+
 
 /* ========================= */
 /* ZONES CLIQUABLES */
