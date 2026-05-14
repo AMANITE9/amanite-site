@@ -86,7 +86,7 @@ body{
 
     object-fit:contain;
 
-    position:relative;
+    
 
     z-index:1;
 
@@ -99,31 +99,35 @@ body{
 
 @media (max-width:768px){
 
+    body{
+
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+
     .page-container{
 
-        position:fixed;
-
-        inset:0;
+        position:relative;
 
         width:100vw;
-        height:100vh;
 
-        overflow:hidden;
+        display:flex;
+        justify-content:center;
 
-        display:block;
+        overflow-x:hidden;
+        overflow-y:auto;
     }
 
     .page-image{
 
         width:100vw;
-        height:100vh;
+        height:auto;
 
-        object-fit:cover;
+        display:block;
 
-        object-position:center;
+        object-fit:contain;
     }
 }
-
 /* ========================= */
 /* ZONES CLIQUABLES */
 /* ========================= */
