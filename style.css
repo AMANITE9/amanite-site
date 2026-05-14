@@ -700,3 +700,30 @@ body{
 
     display:none;
 }
+@media (max-width:768px){
+
+    .volume-1{
+
+        left:73%;
+        top:35.5%;
+    }
+
+    .volume-2{
+
+        left:73%;
+        top:54.5%;
+    }
+
+    .night-volume-1{
+
+        left:73%;
+        top:35.5%;
+    }
+
+    .night-volume-2{
+
+        left:73%;
+        top:54.5%;
+    }
+
+}
