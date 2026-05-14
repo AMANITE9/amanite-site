@@ -70,7 +70,6 @@
         </div>
 
     </div>
-
 <script>
 
 function sendMail(){
@@ -96,13 +95,29 @@ function sendMail(){
         message
     );
 
-    window.location.href =
+    const isMobile =
 
-    `whatsapp://send?phone=33766715186&text=${text}`;
+    /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+    );
+
+    if(isMobile){
+
+        window.location.href =
+
+        `whatsapp://send?phone=33766715186&text=${text}`;
+
+    }else{
+
+        window.open(
+
+            `https://wa.me/33766715186?text=${text}`,
+            "_blank"
+        );
+    }
 }
 
 </script>
-
 
 </body>
 
