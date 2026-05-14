@@ -18,7 +18,7 @@ body{
     overflow:hidden;
 
     display:flex;
-    justify-content:center;7
+    justify-content:center;
     align-items:center;
 
     background:black;
@@ -192,19 +192,30 @@ body{
 
 @media (max-width:768px){
 
-    .page-container{
-        width:100vw;
-        height:100vh;
-    }
+  .page-container{
 
-    .page-image{
-        width:100vw;
-        height:100vh;
+    position:fixed;
 
-        object-fit:contain;
-    }
+    inset:0;
 
-    /* HOME */
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+}
+
+.page-image{
+
+    width:100vw;
+    height:100vh;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    display:block;
+}
+
 
     .home-day{
 
