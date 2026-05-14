@@ -875,45 +875,46 @@ cursor:pointer;
     left:73%;
     top:54.5%;
 }
-/* ================= PLAYER ACTIVE ================= */
+/* ================= PLAY ICON ================= */
 
-.demo-bubble.playing{
+.demo-bubble{
 
-    box-shadow:
-    0 0 18px rgba(255,255,255,0.30),
-    0 0 35px rgba(255,255,255,0.14);
+    display:flex;
 
-    animation:softGlow 2.4s ease-in-out infinite;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-size:2.2rem;
+
+    font-family:sans-serif;
+
+    user-select:none;
 }
 
-/* ANIMATION */
+/* PLAY */
 
-@keyframes softGlow{
+.demo-bubble::after{
 
-    0%{
+    content:"▶";
 
-        opacity:0.55;
+    opacity:0.75;
 
-        box-shadow:
-        0 0 14px rgba(255,255,255,0.20),
-        0 0 24px rgba(255,255,255,0.08);
-    }
+    transform:
+    translateX(4px)
+    translateY(-2px);
+}
 
-    50%{
+/* PAUSE */
 
-        opacity:0.95;
+.demo-bubble.playing::after{
 
-        box-shadow:
-        0 0 24px rgba(255,255,255,0.38),
-        0 0 42px rgba(255,255,255,0.18);
-    }
+    content:"⏸";
 
-    100%{
+    opacity:0.9;
 
-        opacity:0.55;
-
-        box-shadow:
-        0 0 14px rgba(255,255,255,0.20),
-        0 0 24px rgba(255,255,255,0.08);
-    }
+    transform:
+    translateX(1px)
+    translateY(-2px);
 }
