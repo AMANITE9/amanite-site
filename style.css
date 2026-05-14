@@ -61,7 +61,11 @@ body{
 /* CONTENEUR */
 /* ========================= */
 
+
+/* ================= DESKTOP ================= */
+
 .page-container{
+
     position:relative;
 
     height:100vh;
@@ -73,11 +77,8 @@ body{
     isolation:isolate;
 }
 
-/* ========================= */
-/* IMAGE */
-/* ========================= */
-
 .page-image{
+
     height:100vh;
     width:auto;
 
@@ -85,11 +86,42 @@ body{
 
     object-fit:contain;
 
-     position:relative;
+    position:relative;
 
     z-index:1;
 
-     pointer-events:none;
+    pointer-events:none;
+}
+
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+    .page-container{
+
+        position:fixed;
+
+        inset:0;
+
+        width:100vw;
+        height:100vh;
+
+        overflow:hidden;
+
+        display:block;
+    }
+
+    .page-image{
+
+        width:100vw;
+        height:100vh;
+
+        object-fit:cover;
+
+        object-position:center;
+    }
 }
 
 /* ========================= */
