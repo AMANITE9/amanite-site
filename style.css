@@ -920,3 +920,93 @@ body{
 
     display:none;
 }
+@media (max-width:768px){
+
+    /* ================= PLAYERS ================= */
+
+    .audio-zone-1,
+    .night-audio-1{
+
+        top:20%;
+    }
+
+    .audio-zone-2,
+    .night-audio-2{
+
+        top:37%;
+    }
+
+    /* ================= BARRES PROGRESSION ================= */
+
+    .progress-1,
+    .night-progress-1{
+
+        top:33%;
+    }
+
+    .progress-2,
+    .night-progress-2{
+
+        top:50%;
+    }
+
+    /* ================= VOLUME ================= */
+
+    .volume-1,
+    .night-volume-1{
+
+        top:32.5%;
+    }
+
+    .volume-2,
+    .night-volume-2{
+
+        top:49.5%;
+    }
+
+    /* ================= PROMOS ================= */
+
+    .thumb1,
+    .thumb2,
+    .thumb3,
+    .night-thumb1,
+    .night-thumb2,
+    .night-thumb3{
+
+        top:54%;
+    }
+
+    /* ================= BULLES BAS ================= */
+
+    .day-night{
+
+        top:88%;
+    }
+
+    .day-booking{
+
+        top:93%;
+    }
+
+    .night-day{
+
+        top:86%;
+    }
+
+    .night-booking{
+
+        top:92%;
+    }
+
+    /* ================= PAGE MOBILE ================= */
+
+    .page-container{
+
+        min-height:118vh;
+    }
+
+    .page-image{
+
+        height:118vh;
+    }
+}
