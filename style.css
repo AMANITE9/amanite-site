@@ -107,27 +107,20 @@ body{
 
     .page-container{
 
-        position:relative;
+        min-height:110vh;
 
-        width:100vw;
-
-        display:flex;
-        justify-content:center;
-
-        overflow-x:hidden;
-        overflow-y:auto;
+        align-items:flex-start;
     }
 
     .page-image{
 
-        width:100vw;
-        height:auto;
-
-        display:block;
+        height:110vh;
+        width:auto;
 
         object-fit:contain;
     }
 }
+
 /* ========================= */
 /* ZONES CLIQUABLES */
 /* ========================= */
