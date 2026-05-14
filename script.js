@@ -93,10 +93,14 @@ progressContainers.forEach(bar => {
 
 audio.addEventListener('ended', () => {
 
-    if(currentBubble){
+    /* RESET BULLES */
 
-        currentBubble.classList.remove('playing');
-    }
+    bubbles.forEach(b =>
+
+        b.classList.remove('playing')
+    );
+
+    /* RESET BARRES */
 
     progressBars.forEach(bar => {
 

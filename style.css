@@ -843,8 +843,9 @@ cursor:pointer;
 
 .night-audio-2{
 
-    left:35%;
-    top:40%;
+    left:35,5%;
+    top:41.5%;
+
 }
 
 /* BARRES PROGRESSION */
@@ -873,4 +874,46 @@ cursor:pointer;
 
     left:73%;
     top:54.5%;
+}
+/* ================= PLAYER ACTIVE ================= */
+
+.demo-bubble.playing{
+
+    box-shadow:
+    0 0 18px rgba(255,255,255,0.30),
+    0 0 35px rgba(255,255,255,0.14);
+
+    animation:softGlow 2.4s ease-in-out infinite;
+}
+
+/* ANIMATION */
+
+@keyframes softGlow{
+
+    0%{
+
+        opacity:0.55;
+
+        box-shadow:
+        0 0 14px rgba(255,255,255,0.20),
+        0 0 24px rgba(255,255,255,0.08);
+    }
+
+    50%{
+
+        opacity:0.95;
+
+        box-shadow:
+        0 0 24px rgba(255,255,255,0.38),
+        0 0 42px rgba(255,255,255,0.18);
+    }
+
+    100%{
+
+        opacity:0.55;
+
+        box-shadow:
+        0 0 14px rgba(255,255,255,0.20),
+        0 0 24px rgba(255,255,255,0.08);
+    }
 }
