@@ -3,8 +3,8 @@ const audio = new Audio();
 const bubbles =
 document.querySelectorAll('.demo-bubble');
 
-const progressBar =
-document.querySelector('.progress-fill');
+const progressBars =
+document.querySelectorAll('.progress-fill');
 
 const progressContainers =
 document.querySelectorAll('.progress-bar');
@@ -61,8 +61,11 @@ audio.addEventListener('timeupdate', () => {
 
     (audio.currentTime / audio.duration) * 100;
 
-    progressBar.style.width =
-    progress + '%';
+    progressBars.forEach(bar => {
+
+        bar.style.width =
+        progress + '%';
+    });
 });
 
 /* ================= CLIQUER BARRE ================= */
@@ -95,5 +98,8 @@ audio.addEventListener('ended', () => {
         currentBubble.classList.remove('playing');
     }
 
-    progressBar.style.width = '0%';
+    progressBars.forEach(bar => {
+
+        bar.style.width = '0%';
+    });
 });
