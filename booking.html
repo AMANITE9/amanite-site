@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FOND FLOU -->
+    <div class="blur-background"
+         style="background-image:url('images/BOOKING.PNG')">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="dark-overlay"></div>
+
+    <!-- PAGE -->
+    <div class="page-container">
+
+        <!-- IMAGE -->
+        <img src="images/BOOKING.PNG"
+             class="page-image">
+
+        <!-- BOUTONS -->
+
+        <a href="day.html"
+           class="bubble-link booking-day">
+        </a>
+
+        <a href="night.html"
+           class="bubble-link booking-night">
+        </a>
+
+        <!-- FORMULAIRE BOOKING -->
+
+        <div class="booking-form">
+
+            <!-- NOM -->
+
+            <input type="text"
+                   id="name"
+                   placeholder="Name:"
+                   class="booking-input booking-name">
+
+            <!-- EMAIL -->
+
+            <input type="email"
+                   id="email"
+                   placeholder="Email:"
+                   class="booking-input booking-email">
+
+            <!-- MESSAGE -->
+
+            <textarea id="message"
+                      placeholder="MESSAGE"
+                      class="booking-message">
+            </textarea>
+
+            <!-- SEND ZONE -->
+
+            <div class="send-zone"
+                 onclick="sendMail()">
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+
+function sendMail(){
+
+    const name =
+    document.getElementById("name").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const message =
+    document.getElementById("message").value;
+
+    const text =
+    encodeURIComponent(
+
+        "BOOKING REQUEST\n\n" +
+
+        "Name: " + name + "\n\n" +
+
+        "Email: " + email + "\n\n" +
+
+        message
+    );
+
+    window.location.href =
+
+    `https://wa.me/33766715186?text=${text}`;
+}
+
+</script>
+
+</body>
+
+</html>
+

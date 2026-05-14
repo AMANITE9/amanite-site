@@ -1,0 +1,876 @@
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ========================= */
+/* BODY */
+/* ========================= */
+
+body{
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:black;
+}
+
+/* ========================= */
+/* FOND FLOU */
+/* ========================= */
+
+.blur-background{
+    position:fixed;
+
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+
+    filter:blur(30px) brightness(0.55);
+
+    transform:scale(1.15);
+
+    z-index:-2;
+}
+
+/* ========================= */
+/* FILTRE SOMBRE */
+/* ========================= */
+
+.dark-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.15);
+
+    z-index:-1;
+}
+
+/* ========================= */
+/* CONTENEUR */
+/* ========================= */
+
+.page-container{
+    position:relative;
+
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    isolation:isolate;
+}
+
+/* ========================= */
+/* IMAGE */
+/* ========================= */
+
+.page-image{
+    height:100vh;
+    width:auto;
+
+    display:block;
+
+    object-fit:contain;
+
+     position:relative;
+
+    z-index:1;
+
+     pointer-events:none;
+}
+
+/* ========================= */
+/* ZONES CLIQUABLES */
+/* ========================= */
+
+.bubble-link{
+    position:absolute;
+
+    display:block;
+
+    border-radius:50%;
+
+   
+    z-index:20;
+
+    cursor:pointer;
+}
+
+/* ================================================= */
+/* ================= HOME PAGE ===================== */
+/* ================================================= */
+
+/* DESKTOP */
+
+.home-day{
+
+    width:29%;
+    aspect-ratio:1/1;
+
+    left:10%;
+    top:36%;
+}
+
+.home-night{
+
+    width:32%;
+    aspect-ratio:1/1;
+
+    right:12%;
+    top:36%;
+}
+
+.home-booking{
+
+    width:32%;
+    aspect-ratio:1/1;
+
+    left:34%;
+    top:55%;
+}
+
+/* ================================================= */
+/* ================= DAY PAGE ====================== */
+/* ================================================= */
+
+.day-night{
+
+    width:25%;
+    aspect-ratio:1/1;
+
+    right:27%;
+    top:84%;
+}
+
+.day-booking{
+
+    width:25%;
+    aspect-ratio:1/1;
+
+    left:75%;
+    top:90%;
+}
+
+/* ================================================= */
+/* ================= NIGHT PAGE ==================== */
+/* ================================================= */
+
+.night-day{
+
+    width:25%;
+    aspect-ratio:1/1;
+
+    left:50%;
+    top:82%;
+}
+
+.night-booking{
+
+    width:25%;
+    aspect-ratio:1/1;
+
+    right:3%;
+    top:88%;
+}
+
+/* ================================================= */
+/* ================= MOBILE ======================== */
+/* ================================================= */
+
+@media (max-width:768px){
+
+    .page-container{
+        width:100vw;
+        height:100vh;
+    }
+
+    .page-image{
+        width:100vw;
+        height:100vh;
+
+        object-fit:contain;
+    }
+
+    /* HOME */
+
+    .home-day{
+
+        width:35%;
+        aspect-ratio:1/1;
+
+        left:10%;
+        top:35%;
+    }
+
+    .home-night{
+
+        width:35%;
+        aspect-ratio:1/1;
+
+        right:13%;
+        top:35%;
+    }
+
+    .home-booking{
+
+        width:35%;
+        aspect-ratio:1/1;
+
+        left:33%;
+        top:56%;
+    }
+
+    /* DAY */
+
+    .day-night{
+
+        width:25%;
+        aspect-ratio:1/1;
+
+        right:28%;
+        top:84%;
+    }
+
+    .day-booking{
+
+        width:25%;
+        aspect-ratio:1/1;
+
+        left:75%;
+        top:90%;
+    }
+
+    /* NIGHT */
+
+    .night-day{
+
+        width:25%;
+        aspect-ratio:1/1;
+
+        left:50%;
+        top:82%;
+    }
+
+    .night-booking{
+
+        width:25%;
+        aspect-ratio:1/1;
+
+        right:3%;
+        top:88%;
+    }
+
+}
+/* ================================================= */
+/* ================= BOOKING PAGE ================== */
+/* ================================================= */
+
+/* ================= DESKTOP ======================= */
+
+.booking-day{
+
+    width:35%;
+    aspect-ratio:1/1;
+
+    left:10%;
+    top:80%;
+}
+
+.booking-night{
+
+    width:35%;
+    aspect-ratio:1/1;
+
+    right:10%;
+    top:80%;
+}
+
+/* ================= MOBILE ======================== */
+
+@media (max-width:768px){
+
+    .booking-day{
+
+        width:35%;
+        height:28vw;
+
+        left:6%;
+        top:82%;
+
+        
+    }
+
+    .booking-night{
+
+        width:35%;
+        height:28vw;
+
+        right:10%;
+        top:82%;
+
+        
+    }
+
+}
+/* ================================================= */
+/* ================= PROMO GALLERY ================= */
+/* ================================================= */
+
+.promo-gallery{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    pointer-events:none;
+
+    z-index:50;
+}
+
+.promo-thumb{
+
+    position:absolute;
+
+    width:20%;
+    height:auto;
+
+    display:block;
+
+    border-radius:18px;
+
+    opacity:0.72;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+
+    transition:0.35s ease;
+
+    z-index:999;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,0.12);
+
+}
+
+/* HOVER */
+
+.promo-thumb:hover{
+
+    transform:scale(1.05);
+
+    opacity:1;
+}
+
+/* ================= DAY POSITIONS ================= */
+
+.thumb1{
+
+    left:8%;
+    top:60%;
+}
+
+.thumb2{
+
+    left:39%;
+    top:60%;
+}
+
+.thumb3{
+
+    left:68%;
+    top:60%;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+    .promo-thumb{
+
+        width:20%;
+    }
+
+    .thumb1{
+
+        left:8%;
+        top:60%;
+    }
+
+    .thumb2{
+
+        left:39%;
+        top:60%;
+    }
+
+    .thumb3{
+
+        left:68%;
+        top:60%;
+    }
+
+}
+/* ================================================= */
+/* ================= NIGHT GALLERY ================= */
+/* ================================================= */
+
+/* DESKTOP */
+
+.night-thumb1,
+.night-thumb2,
+.night-thumb3{
+
+    position:absolute;
+
+    width:20% !important;
+
+    height:auto;
+
+    z-index:9999;
+}
+
+.night-thumb1{
+
+    left:8%;
+    top:61%;
+}
+
+.night-thumb2{
+
+    left:39%;
+    top:61%;
+}
+
+.night-thumb3{
+
+    left:68%;
+    top:61%;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+    .night-thumb1,
+    .night-thumb2,
+    .night-thumb3{
+
+        width:20% !important;
+
+    }
+
+    .night-thumb1{
+
+        left:8%;
+        top:62%;
+    }
+
+    .night-thumb2{
+
+        left:39%;
+        top:62%;
+    }
+
+    .night-thumb3{
+
+        left:68%;
+        top:62%;
+    }
+
+}
+/* ================================================= */
+/* ================= LIGHTBOX ====================== */
+/* ================================================= */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.82);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+    backdrop-filter:blur(10px);
+}
+
+.lightbox-img{
+
+    max-width:85%;
+    max-height:85%;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 0 60px rgba(255,255,255,0.12);
+}/* ================= NAVIGATION LIGHTBOX ================= */
+
+.lightbox-left,
+.lightbox-right{
+
+    position:absolute;
+
+    top:0;
+
+    width:35%;
+    height:100%;
+
+    z-index:100000;
+}
+
+.lightbox-left{
+
+    left:0;
+}
+
+.lightbox-right{
+
+    right:0;
+}
+/* ================================================= */
+/* ================= BOOKING PAGE ================== */
+/* ================================================= */
+
+/* ================= DESKTOP ======================= */
+
+.booking-day{
+
+    width:35%;
+    aspect-ratio:1/1;
+
+    left:10%;
+    top:80%;
+
+    z-index:200;
+}
+
+.booking-night{
+
+    width:35%;
+    aspect-ratio:1/1;
+
+    right:10%;
+    top:80%;
+
+    z-index:200;
+}
+
+/* ================= MOBILE ======================== */
+
+@media (max-width:768px){
+
+    .booking-day{
+
+        width:35%;
+        height:28vw;
+
+        left:6%;
+        top:82%;
+
+        z-index:200;
+    }
+
+    .booking-night{
+
+        width:35%;
+        height:28vw;
+
+        right:10%;
+        top:82%;
+
+        z-index:200;
+    }
+
+}
+
+/* ================================================= */
+/* ================= BOOKING FORM ================== */
+/* ================================================= */
+
+.booking-form{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    z-index:5;
+}
+
+/* INPUTS */
+
+.booking-input,
+.booking-message{
+
+    position:absolute;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-family:sans-serif;
+}
+
+/* NOM */
+
+.booking-name{
+
+    width:32%;
+
+    left:26%;
+    top:48.3%;
+}
+
+/* EMAIL */
+
+.booking-email{
+
+    width:16%;
+
+    left:26%;
+    top:52.3%;
+}
+
+/* MESSAGE */
+
+.booking-message{
+
+    width:42%;
+    height:18%;
+
+    max-width:55%;
+    max-height:10%;
+
+    left:26%;
+    top:57%;
+
+    resize:none;
+
+    overflow-y:auto;
+
+    scrollbar-width:none;
+}
+
+/* SEND ZONE */
+
+.send-zone{
+
+    position:absolute;
+
+    width:25%;
+    aspect-ratio:1/1;
+
+    left:38%;
+    top:70%;
+
+    
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    z-index:999;
+
+    pointer-events:auto;
+}
+
+
+/* PLACEHOLDER */
+
+.booking-input::placeholder,
+.booking-message::placeholder{
+
+    color:rgba(255,255,255,0.55);
+}
+/* ================================================= */
+/* ================= AUDIO PLAYER ================== */
+/* ================================================= */
+
+/* ZONES PLAY */
+
+.audio-zone{
+
+    position:absolute;
+
+    width:25%;
+    aspect-ratio:1/1;
+
+    border-radius:50%;
+
+    
+    z-index:500;
+
+    cursor:pointer;
+}
+
+/* BULLE 1 */
+
+.audio-zone-1{
+
+    left:35%;
+    top:22%;
+}
+
+/* BULLE 2 */
+
+.audio-zone-2{
+
+    left:35%;
+    top:40%;
+}
+
+/* BARRES PROGRESSION */
+
+.progress-bar{
+
+    position:absolute;
+
+    width:40%;
+    height:3px;
+
+    background:rgba(255,255,255,0.18);
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    z-index:500;
+
+    pointer-events:auto;
+
+cursor:pointer;
+
+}
+
+.progress-1{
+
+    left:30%;
+    top:36%;
+}
+
+.progress-2{
+
+    left:30%;
+    top:55%;
+}
+
+/* REMPLISSAGE */
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:white;
+
+    pointer-events:none;
+}
+
+/* VOLUME */
+
+.volume-bar{
+
+    position:absolute;
+
+    width:10%;
+
+    z-index:500;
+
+    opacity:0.45;
+}
+
+/* VOLUME 1 */
+
+.volume-1{
+
+    left:73%;
+    top: 35.5%;
+}
+
+/* VOLUME 2 */
+
+.volume-2{
+
+    left:73%;
+    top:54.5%;
+}
+/* ================================================= */
+/* ================= NIGHT AUDIO =================== */
+/* ================================================= */
+
+/* BULLE 1 */
+
+.night-audio-1{
+
+    left:35%;
+    top:22%;
+}
+
+/* BULLE 2 */
+
+.night-audio-2{
+
+    left:35%;
+    top:40%;
+}
+
+/* BARRES PROGRESSION */
+
+.night-progress-1{
+
+    left:30%;
+    top:36%;
+}
+
+.night-progress-2{
+
+    left:30%;
+    top:55%;
+}
+
+/* VOLUME */
+
+.night-volume-1{
+
+    left:73%;
+    top:35.5%;
+}
+
+.night-volume-2{
+
+    left:73%;
+    top:54.5%;
+}

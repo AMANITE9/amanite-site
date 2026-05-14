@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Night</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FOND FLOU -->
+    <div class="blur-background"
+         style="background-image:url('images/NIGHT.PNG')">
+    </div>
+
+    <!-- FILTRE -->
+    <div class="dark-overlay"></div>
+
+    <!-- CONTENEUR -->
+    <div class="page-container">
+
+        <!-- IMAGE -->
+        <img src="images/NIGHT.PNG"
+             class="page-image" />
+
+        <!-- ZONES CLIQUABLES -->
+
+        <a href="day.html"
+           class="bubble-link night-day">
+        </a>
+
+        <a href="booking.html"
+           class="bubble-link night-booking">
+        </a>
+<!-- AUDIO ZONES -->
+
+<div class="audio-zone night-audio-1 demo-bubble"
+     data-track="audio/FUNKHOUSE.mp3">
+</div>
+
+<div class="audio-zone night-audio-2 demo-bubble"
+     data-track="audio/TECHHOUSE.mp3">
+</div>
+
+
+<!-- BARRES PROGRESSION -->
+
+<div class="progress-bar night-progress-1"
+     onclick="setProgress(event)">
+
+    <div class="progress-fill"
+         id="progress-fill">
+    </div>
+
+</div>
+
+<div class="progress-bar night-progress-2"
+     onclick="setProgress(event)">
+
+    <div class="progress-fill">
+    </div>
+
+</div>
+
+<!-- BARRES VOLUME -->
+
+<input type="range"
+       min="0"
+       max="1"
+       step="0.01"
+       value="1"
+       class="volume-bar night-volume-1"
+       onchange="changeVolume(this.value)">
+
+<input type="range"
+       min="0"
+       max="1"
+       step="0.01"
+       value="1"
+       class="volume-bar night-volume-2"
+       onchange="changeVolume(this.value)">
+
+<!-- AUDIO -->
+
+<audio id="audio-player">
+
+    <source src="audio/DEEPHOUSE.mp3"
+            type="audio/mpeg">
+
+</audio>
+
+        <!-- GALERIE NIGHT -->
+
+        <div class="promo-gallery">
+
+            <img src="images/PROMONIGHT1.PNG"
+                 class="promo-thumb night-thumb1"
+                 onclick="openGallery(0)">
+
+            <img src="images/PROMONIGHT2.PNG"
+                 class="promo-thumb night-thumb2"
+                 onclick="openGallery(1)">
+
+            <img src="images/PROMONIGHT3.PNG"
+                 class="promo-thumb night-thumb3"
+                 onclick="openGallery(2)">
+
+        </div>
+
+    </div>
+
+    <!-- LIGHTBOX -->
+
+    <div id="lightbox"
+         class="lightbox"
+         onclick="closeGallery()">
+
+        <!-- ZONE GAUCHE -->
+
+        <div class="lightbox-left"
+             onclick="prevImage(event)">
+        </div>
+
+        <!-- IMAGE -->
+
+        <img id="lightbox-img"
+             class="lightbox-img">
+
+        <!-- ZONE DROITE -->
+
+        <div class="lightbox-right"
+             onclick="nextImage(event)">
+        </div>
+
+    </div>
+
+    <script>
+
+    const galleryImages = [
+
+        "images/PROMONIGHT1.PNG",
+        "images/PROMONIGHT2.PNG",
+        "images/PROMONIGHT3.PNG",
+        "images/PROMONIGHT4.PNG",
+        "images/PROMONIGHT5.PNG",
+        "images/PROMONIGHT6.PNG"
+
+    ];
+
+    let currentImage = 0;
+
+    function openGallery(index){
+
+        currentImage = index;
+
+        document.getElementById("lightbox").style.display = "flex";
+
+        document.getElementById("lightbox-img").src =
+        galleryImages[currentImage];
+    }
+
+    function closeGallery(){
+
+        document.getElementById("lightbox").style.display = "none";
+    }
+
+    function nextImage(event){
+
+        event.stopPropagation();
+
+        currentImage++;
+
+        if(currentImage >= galleryImages.length){
+
+            currentImage = 0;
+        }
+
+        document.getElementById("lightbox-img").src =
+        galleryImages[currentImage];
+    }
+
+    function prevImage(event){
+
+        event.stopPropagation();
+
+        currentImage--;
+
+        if(currentImage < 0){
+
+            currentImage = galleryImages.length - 1;
+        }
+
+        document.getElementById("lightbox-img").src =
+        galleryImages[currentImage];
+    }
+/* ================= AUDIO ================= */
+
+const audio =
+document.getElementById("audio-player");
+
+const bubbles =
+document.querySelectorAll(".demo-bubble");
+
+let currentBubble = null;
+
+bubbles.forEach(bubble => {
+
+    bubble.addEventListener("click", () => {
+
+        const track =
+        bubble.dataset.track;
+
+        if(audio.src.includes(track)
+        && !audio.paused){
+
+            audio.pause();
+
+            bubble.classList.remove("playing");
+
+            return;
+        }
+
+        bubbles.forEach(b =>
+
+            b.classList.remove("playing")
+        );
+
+        audio.src = track;
+
+        audio.play();
+
+        bubble.classList.add("playing");
+
+        currentBubble = bubble;
+    });
+});
+
+
+function changeVolume(value){
+
+    audio.volume = value;
+}
+
+audio.addEventListener("timeupdate", () => {
+
+    const progress =
+
+    (audio.currentTime / audio.duration) * 100;
+
+    const fills =
+    document.querySelectorAll(".progress-fill");
+
+    fills.forEach(fill => {
+
+        fill.style.width =
+        progress + "%";
+    });
+
+});
+
+
+/* CLICK PROGRESS BAR */
+
+function setProgress(event){
+
+    const bar = event.currentTarget;
+
+    const rect = bar.getBoundingClientRect();
+
+    const clickX = event.clientX - rect.left;
+
+    const width = rect.width;
+
+    const percent = clickX / width;
+
+    audio.currentTime =
+    percent * audio.duration;
+}
+    </script>
+
+</body>
+
+</html>
