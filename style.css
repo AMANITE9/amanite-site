@@ -155,30 +155,32 @@ body{
 
 .home-day{
 
-    width:29%;
+    width:31%;
     aspect-ratio:1/1;
 
-    left:10%;
-    top:36%;
+    left:8.5%;
+    top:35%;
 }
 
 .home-night{
 
-    width:32%;
+    width:35%;
     aspect-ratio:1/1;
 
-    right:12%;
-    top:36%;
+    right:10.5%;
+    top:34%;
 }
 
 .home-booking{
 
-    width:32%;
+    width:38%;
     aspect-ratio:1/1;
 
-    left:34%;
-    top:55%;
+    left:32%;
+    top:53.5%;
 }
+
+
 
 /* ================================================= */
 /* ================= DAY PAGE ====================== */
@@ -186,20 +188,20 @@ body{
 
 .day-night{
 
-    width:25%;
+    width:26%;
     aspect-ratio:1/1;
 
-    right:27%;
-    top:84%;
+    right:24.5%;
+    top:84.5%;
 }
 
 .day-booking{
 
-    width:25%;
+    width:23%;
     aspect-ratio:1/1;
 
-    left:75%;
-    top:90%;
+    left:73.5%;
+    top:89.5%;
 }
 
 /* ================================================= */
@@ -208,49 +210,24 @@ body{
 
 .night-day{
 
-    width:25%;
+    width:23%;
     aspect-ratio:1/1;
 
-    left:50%;
-    top:82%;
+    left:53%;
+    top:82.5%;
 }
 
 .night-booking{
 
-    width:25%;
+    width:23%;
     aspect-ratio:1/1;
 
-    right:3%;
-    top:88%;
+    right:4%;
+    top:89%;
 }
 
-/* ================================================= */
-/* ================= MOBILE BOTTOM ================= */
-/* ================================================= */
 
-@media (max-width:768px){
 
-    .day-night{
-
-        top:81%;
-    }
-
-    .day-booking{
-
-        top:86%;
-    }
-
-    .night-day{
-
-        top:79%;
-    }
-
-    .night-booking{
-
-        top:85%;
-    }
-
-}
 
 /* ================================================= */
 /* ================= BOOKING PAGE ================== */
@@ -572,27 +549,27 @@ body{
 
 .audio-zone-1{
 
-    left:35%;
-    top:22%;
+    left:36%;
+    top:21.5%;
 }
 
 .audio-zone-2{
 
-    left:35%;
-    top:40%;
+    left:36%;
+    top:39.5%;
 }
 
 /* ================= NIGHT AUDIO =================== */
 
 .night-audio-1{
 
-    left:35%;
+    left:36%;
     top:22%;
 }
 
 .night-audio-2{
 
-    left:35.5%;
+    left:37%;
     top:41.5%;
 }
 
@@ -731,5 +708,29 @@ body{
         left:73%;
         top:54.5%;
     }
+}
+/* ================= TAP EFFECT ================= */
 
+.bubble-link,
+.audio-zone,
+.send-zone{
+
+    transition:
+    transform 0.12s ease,
+    opacity 0.12s ease,
+    box-shadow 0.18s ease;
+}
+
+/* APPUI */
+
+.bubble-link:active,
+.audio-zone:active,
+.send-zone:active{
+
+    transform:scale(0.96);
+
+    opacity:0.82;
+
+    box-shadow:
+    0 0 18px rgba(255,255,255,0.18);
 }
