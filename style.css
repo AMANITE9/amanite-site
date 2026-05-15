@@ -717,4 +717,56 @@ body{
 .play-icon{
     display:none;
 }
+/* ================= GALLERY ARROWS ================= */
+
+.gallery-arrow{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:white;
+
+    font-size:4rem;
+
+    font-weight:200;
+
+    opacity:0.22;
+
+    pointer-events:none;
+
+    z-index:100001;
+
+    user-select:none;
+
+    transition:0.25s ease;
+}
+
+/* GAUCHE */
+
+.arrow-left{
+
+    left:4%;
+}
+
+/* DROITE */
+
+.arrow-right{
+
+    right:4%;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+    .gallery-arrow{
+
+        font-size:3rem;
+
+        opacity:0.18;
+    }
+}
 
