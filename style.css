@@ -779,7 +779,17 @@ body{
 
     inset:0;
 
-    background:black;
+    background:
+    linear-gradient(
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.08)
+    ),
+    url("images/transition.PNG");
+
+  background-size:contain;
+background-repeat:no-repeat;
+background-position:center;
+background-color:black;
 
     z-index:999999;
 
@@ -787,10 +797,10 @@ body{
 
     opacity:1;
 
-    transition:opacity 0.8s ease;
+    transition:opacity 0.9s ease;
 }
 
-/* PAGE VISIBLE */
+/* ================= PAGE VISIBLE ================= */
 
 .fade-transition.hidden{
 
