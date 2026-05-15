@@ -54,13 +54,7 @@
                    placeholder="Name:"
                    class="booking-input booking-name">
 
-            <!-- EMAIL -->
-
-            <input type="email"
-                   id="email"
-                   placeholder="Email:"
-                   class="booking-input booking-email">
-
+        
             <!-- MESSAGE -->
 
             <textarea id="message"
@@ -91,8 +85,6 @@ function sendMail(){
     const name =
     document.getElementById("name").value;
 
-    const email =
-    document.getElementById("email").value;
 
     const message =
     document.getElementById("message").value;
@@ -104,7 +96,7 @@ function sendMail(){
 
         "Name: " + name + "\n\n" +
 
-        "Email: " + email + "\n\n" +
+       
 
         message
     );
