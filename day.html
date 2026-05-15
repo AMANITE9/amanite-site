@@ -96,7 +96,7 @@
 
     <div id="lightbox"
          class="lightbox"
-         onclick="closeGallery()">
+        >
 
         <!-- ZONE GAUCHE -->
 
@@ -149,9 +149,14 @@ function closeGallery(){
     document.getElementById("lightbox").style.display = "none";
 }
 
+/* ================= NEXT ================= */
+
 function nextImage(event){
 
-    event.stopPropagation();
+    if(event){
+
+        event.stopPropagation();
+    }
 
     currentImage++;
 
@@ -164,15 +169,21 @@ function nextImage(event){
     galleryImages[currentImage];
 }
 
+/* ================= PREV ================= */
+
 function prevImage(event){
 
-    event.stopPropagation();
+    if(event){
+
+        event.stopPropagation();
+    }
 
     currentImage--;
 
     if(currentImage < 0){
 
-        currentImage = galleryImages.length - 1;
+        currentImage =
+        galleryImages.length - 1;
     }
 
     document.getElementById("lightbox-img").src =
@@ -192,7 +203,6 @@ document.querySelectorAll(".progress-bar");
 
 const progressFills =
 document.querySelectorAll(".progress-fill");
-
 
 let currentBubble = null;
 let currentIndex = 0;
@@ -236,7 +246,6 @@ bubbles.forEach((bubble, index) => {
         currentIndex = index;
     });
 });
-
 
 /* ================= UPDATE PROGRESS ================= */
 
@@ -291,9 +300,69 @@ audio.addEventListener("ended", () => {
     });
 });
 
+/* ================= LIGHTBOX ================= */
+
+const lightbox =
+document.getElementById("lightbox");
+
+/* ================= TAP OUTSIDE TO CLOSE ================= */
+
+lightbox.addEventListener("click", e => {
+
+    if(e.target === lightbox){
+
+        closeGallery();
+    }
+});
+
+/* ================================================= */
+/* ================= SWIPE MOBILE ================== */
+/* ================================================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+/* TOUCH START */
+
+lightbox.addEventListener("touchstart", e => {
+
+    touchStartX =
+    e.changedTouches[0].screenX;
+});
+
+/* TOUCH END */
+
+lightbox.addEventListener("touchend", e => {
+
+    touchEndX =
+    e.changedTouches[0].screenX;
+
+    handleSwipe();
+});
+
+/* SWIPE DETECTION */
+
+function handleSwipe(){
+
+    const swipeDistance =
+    touchEndX - touchStartX;
+
+    /* SWIPE GAUCHE */
+
+    if(swipeDistance < -50){
+
+        nextImage();
+    }
+
+    /* SWIPE DROITE */
+
+    if(swipeDistance > 50){
+
+        prevImage();
+    }
+}
+
 </script>
-
-
 
 </body>
 
