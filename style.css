@@ -787,48 +787,138 @@ body{
 
     transform:translateY(-50%);
 
-    color:white;
-
-    font-size:4rem;
+    font-size:4.5rem;
 
     font-weight:200;
-
-    opacity:0.22;
-
-    pointer-events:none;
 
     z-index:100001;
 
     user-select:none;
 
-    transition:0.25s ease;
+    pointer-events:none;
+
+    opacity:0.9;
+
+    animation:
+    arrowRGB 4s linear infinite,
+    arrowPulse 2s ease-in-out infinite;
+
+    text-shadow:
+    0 0 12px rgba(255,255,255,0.45),
+    0 0 30px rgba(255,255,255,0.25);
 }
 
-/* GAUCHE */
+/* ================= LEFT ================= */
 
 .arrow-left{
 
     left:4%;
 }
 
-/* DROITE */
+/* ================= RIGHT ================= */
 
 .arrow-right{
 
     right:4%;
 }
 
-/* MOBILE */
+/* ================= RGB ================= */
+
+@keyframes arrowRGB{
+
+    0%{
+
+        color:#ff7ac3;
+
+        text-shadow:
+        0 0 12px #ff7ac3,
+        0 0 32px #ff7ac388,
+        0 0 58px #ff7ac344;
+    }
+
+    25%{
+
+        color:#7abfff;
+
+        text-shadow:
+        0 0 12px #7abfff,
+        0 0 32px #7abfff88,
+        0 0 58px #7abfff44;
+    }
+
+    50%{
+
+        color:#7affd4;
+
+        text-shadow:
+        0 0 12px #7affd4,
+        0 0 32px #7affd488,
+        0 0 58px #7affd444;
+    }
+
+    75%{
+
+        color:#c68cff;
+
+        text-shadow:
+        0 0 12px #c68cff,
+        0 0 32px #c68cff88,
+        0 0 58px #c68cff44;
+    }
+
+    100%{
+
+        color:#ff7ac3;
+
+        text-shadow:
+        0 0 12px #ff7ac3,
+        0 0 32px #ff7ac388,
+        0 0 58px #ff7ac344;
+    }
+}
+
+/* ================= PULSE ================= */
+
+@keyframes arrowPulse{
+
+    0%{
+
+        transform:
+        translateY(-50%)
+        scale(1);
+
+        opacity:0.72;
+    }
+
+    50%{
+
+        transform:
+        translateY(-50%)
+        scale(1.08);
+
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        translateY(-50%)
+        scale(1);
+
+        opacity:0.72;
+    }
+}
+
+/* ================= MOBILE ================= */
 
 @media (max-width:768px){
 
     .gallery-arrow{
 
-        font-size:3rem;
-
-        opacity:0.18;
+        font-size:3.5rem;
     }
 }
+
 /* ================================================= */
 /* ================= PAGE TRANSITION =============== */
 /* ================================================= */
