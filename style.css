@@ -273,6 +273,9 @@ body{
 
     z-index:50;
 }
+/* ================================================= */
+/* ================= FLOATING GALLERY ============== */
+/* ================================================= */
 
 .promo-thumb{
 
@@ -291,15 +294,41 @@ body{
 
     pointer-events:auto;
 
-    transition:0.35s ease;
-
     z-index:999;
 
     box-shadow:
     0 0 25px rgba(255,255,255,0.12);
+
+    animation:
+    thumbFloat 5s ease-in-out infinite;
+
+    transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
-/* HOVER */
+/* ================= FLOAT ================= */
+
+@keyframes thumbFloat{
+
+    0%{
+
+        transform:translateY(0px);
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+    }
+
+    100%{
+
+        transform:translateY(0px);
+    }
+}
+
+
+/* ================= HOVER ================= */
 
 .promo-thumb:hover{
 
@@ -307,6 +336,21 @@ body{
 
     opacity:1;
 }
+
+/* ================= DESYNC ================= */
+
+.thumb2,
+.night-thumb2{
+
+    animation-delay:1.2s;
+}
+
+.thumb3,
+.night-thumb3{
+
+    animation-delay:2.4s;
+}
+
 
 /* ================= DAY POSITIONS ================= */
 
@@ -660,16 +704,6 @@ body{
 
     filter:brightness(1.18);
 }
-/* ================= PLAYER ACTIVE ================= */
-
-.demo-bubble.playing{
-
-    border-radius:50%;
-
-    animation:
-    rgbPulse 6s linear infinite,
-    bubbleBreath 2.4s ease-in-out infinite;
-}
 
 /* ================= PLAYER ACTIVE ================= */
 
@@ -992,3 +1026,4 @@ body{
 
     opacity:0;
 }
+
