@@ -3,29 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Night</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 </head>
 
 <body>
 
     <!-- FOND FLOU -->
+
     <div class="blur-background"
          style="background-image:url('images/NIGHT.PNG')">
     </div>
 
     <!-- FILTRE -->
+
     <div class="dark-overlay"></div>
 
     <!-- CONTENEUR -->
+
     <div class="page-container">
 
         <!-- IMAGE -->
+
         <img src="images/NIGHT.PNG"
-             class="page-image" />
+             class="page-image">
 
         <!-- ZONES CLIQUABLES -->
 
@@ -36,45 +42,37 @@
         <a href="booking.html"
            class="bubble-link night-booking">
         </a>
-<!-- AUDIO ZONES -->
 
-<div class="audio-zone night-audio-1 demo-bubble"
-     data-track="audio/FUNKHOUSE.mp3">
-</div>
+        <!-- AUDIO ZONES -->
 
-<div class="audio-zone night-audio-2 demo-bubble"
-     data-track="audio/TECHHOUSE.mp3">
-</div>
+        <div class="audio-zone night-audio-1 demo-bubble"
+             data-track="audio/FUNKHOUSE.mp3">
+        </div>
 
+        <div class="audio-zone night-audio-2 demo-bubble"
+             data-track="audio/TECHHOUSE.mp3">
+        </div>
 
-<!-- BARRES PROGRESSION -->
+        <!-- BARRES PROGRESSION -->
 
-<div class="progress-bar night-progress-1"
-     onclick="setProgress(event)">
+        <div class="progress-bar night-progress-1">
 
-    <div class="progress-fill"
-         id="progress-fill">
-    </div>
+            <div class="progress-fill"
+                 id="progress-fill">
+            </div>
 
-</div>
+        </div>
 
-<div class="progress-bar night-progress-2"
-     onclick="setProgress(event)">
+        <div class="progress-bar night-progress-2">
 
-    <div class="progress-fill">
-    </div>
+            <div class="progress-fill">
+            </div>
 
-</div>
+        </div>
 
+        <!-- AUDIO -->
 
-<!-- AUDIO -->
-
-<audio id="audio-player">
-
-    <source src="audio/DEEPHOUSE.mp3"
-            type="audio/mpeg">
-
-</audio>
+        <audio id="audio-player"></audio>
 
         <!-- GALERIE NIGHT -->
 
@@ -99,8 +97,7 @@
     <!-- LIGHTBOX -->
 
     <div id="lightbox"
-         class="lightbox"
-         onclick="closeGallery()">
+         class="lightbox">
 
         <!-- ZONE GAUCHE -->
 
@@ -113,10 +110,11 @@
         <img id="lightbox-img"
              class="lightbox-img">
 
-             <div class="gallery-arrow arrow-left">‹</div>
+        <!-- FLECHES -->
 
-<div class="gallery-arrow arrow-right">›</div>
+        <div class="gallery-arrow arrow-left">‹</div>
 
+        <div class="gallery-arrow arrow-right">›</div>
 
         <!-- ZONE DROITE -->
 
@@ -125,6 +123,11 @@
         </div>
 
     </div>
+
+    <!-- TRANSITION -->
+
+    <div class="fade-transition"></div>
+
 <script>
 
 /* ================= GALLERY ================= */
@@ -223,8 +226,6 @@ bubbles.forEach((bubble, index) => {
 
         const track = bubble.dataset.track;
 
-        /* SI MEME MUSIQUE = PAUSE */
-
         if(audio.src.includes(track) && !audio.paused){
 
             audio.pause();
@@ -234,14 +235,10 @@ bubbles.forEach((bubble, index) => {
             return;
         }
 
-        /* RESET */
-
         bubbles.forEach(b => {
 
             b.classList.remove("playing");
         });
-
-        /* NOUVELLE PISTE */
 
         audio.src = track;
 
@@ -323,22 +320,16 @@ lightbox.addEventListener("click", e => {
     }
 });
 
-/* ================================================= */
-/* ================= SWIPE MOBILE ================== */
-/* ================================================= */
+/* ================= SWIPE MOBILE ================= */
 
 let touchStartX = 0;
 let touchEndX = 0;
-
-/* TOUCH START */
 
 lightbox.addEventListener("touchstart", e => {
 
     touchStartX =
     e.changedTouches[0].screenX;
 });
-
-/* TOUCH END */
 
 lightbox.addEventListener("touchend", e => {
 
@@ -348,27 +339,65 @@ lightbox.addEventListener("touchend", e => {
     handleSwipe();
 });
 
-/* SWIPE DETECTION */
-
 function handleSwipe(){
 
     const swipeDistance =
     touchEndX - touchStartX;
-
-    /* SWIPE GAUCHE */
 
     if(swipeDistance < -50){
 
         nextImage();
     }
 
-    /* SWIPE DROITE */
-
     if(swipeDistance > 50){
 
         prevImage();
     }
 }
+
+/* ================================================= */
+/* ================= PAGE TRANSITION =============== */
+/* ================================================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    const fade =
+    document.querySelector(".fade-transition");
+
+    if(!fade) return;
+
+    /* ================= FADE IN ================= */
+
+    setTimeout(() => {
+
+        fade.classList.add("hidden");
+
+    }, 50);
+
+    /* ================= FADE OUT ================= */
+
+    document.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", e => {
+
+            const href =
+            link.getAttribute("href");
+
+            if(!href) return;
+
+            e.preventDefault();
+
+            fade.classList.remove("hidden");
+
+            setTimeout(() => {
+
+                window.location.href = href;
+
+            }, 800);
+        });
+    });
+});
+
 
 </script>
 

@@ -3,26 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Booking</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 </head>
 
 <body>
 
     <!-- FOND FLOU -->
+
     <div class="blur-background"
          style="background-image:url('images/BOOKING.PNG')">
     </div>
 
     <!-- OVERLAY -->
+
     <div class="dark-overlay"></div>
 
     <!-- PAGE -->
+
     <div class="page-container">
 
         <!-- IMAGE -->
+
         <img src="images/BOOKING.PNG"
              class="page-image">
 
@@ -70,7 +77,14 @@
         </div>
 
     </div>
+
+    <!-- TRANSITION -->
+
+    <div class="fade-transition"></div>
+
 <script>
+
+/* ================= SEND MAIL ================= */
 
 function sendMail(){
 
@@ -118,9 +132,51 @@ function sendMail(){
     }
 }
 
+/* ================================================= */
+/* ================= PAGE TRANSITION =============== */
+/* ================================================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    const fade =
+    document.querySelector(".fade-transition");
+
+    if(!fade) return;
+
+    /* ================= FADE IN ================= */
+
+    setTimeout(() => {
+
+        fade.classList.add("hidden");
+
+    }, 50);
+
+    /* ================= FADE OUT ================= */
+
+    document.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", e => {
+
+            const href =
+            link.getAttribute("href");
+
+            if(!href) return;
+
+            e.preventDefault();
+
+            fade.classList.remove("hidden");
+
+            setTimeout(() => {
+
+                window.location.href = href;
+
+            }, 800);
+        });
+    });
+});
+
 </script>
 
 </body>
 
 </html>
-

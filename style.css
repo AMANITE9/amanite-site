@@ -769,4 +769,30 @@ body{
         opacity:0.18;
     }
 }
+/* ================================================= */
+/* ================= PAGE TRANSITION =============== */
+/* ================================================= */
 
+.fade-transition{
+
+    position:fixed;
+
+    inset:0;
+
+    background:black;
+
+    z-index:999999;
+
+    pointer-events:none;
+
+    opacity:1;
+
+    transition:opacity 0.8s ease;
+}
+
+/* PAGE VISIBLE */
+
+.fade-transition.hidden{
+
+    opacity:0;
+}

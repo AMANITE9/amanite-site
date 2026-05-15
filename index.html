@@ -40,6 +40,57 @@
 </a>
     </div>
 
+    <div class="fade-transition"></div>
+    
+  <script>
+
+/* ================================================= */
+/* ================= PAGE TRANSITION =============== */
+/* ================================================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    const fade =
+    document.querySelector(".fade-transition");
+
+    if(!fade) return;
+
+    /* ================= FADE IN ================= */
+
+    setTimeout(() => {
+
+        fade.classList.add("hidden");
+
+    }, 50);
+
+    /* ================= FADE OUT ================= */
+
+    document.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", e => {
+
+            const href =
+            link.getAttribute("href");
+
+            if(!href) return;
+
+            e.preventDefault();
+
+            fade.classList.remove("hidden");
+
+            setTimeout(() => {
+
+                window.location.href = href;
+
+            }, 800);
+        });
+    });
+});
+
+</script>
+
+
+
 </body>
 
 </html>
