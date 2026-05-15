@@ -86,7 +86,6 @@ progressContainers.forEach(bar => {
         audio.currentTime =
         (clickX / width) * duration;
     });
-
 });
 
 /* ================= FIN MUSIQUE ================= */
@@ -107,3 +106,130 @@ audio.addEventListener('ended', () => {
         bar.style.width = '0%';
     });
 });
+
+/* ================================================= */
+/* ================= GALLERY ======================= */
+/* ================================================= */
+
+const galleryImages = [
+
+    "images/PROMODAY1.PNG",
+    "images/PROMODAY2.PNG",
+    "images/PROMODAY3.PNG",
+    "images/PROMODAY4.PNG",
+    "images/PROMODAY5.PNG",
+    "images/PROMODAY6.PNG"
+
+];
+
+let currentImage = 0;
+
+/* ================= OPEN ================= */
+
+function openGallery(index){
+
+    currentImage = index;
+
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
+
+/* ================= CLOSE ================= */
+
+function closeGallery(){
+
+    document.getElementById("lightbox").style.display = "none";
+}
+
+/* ================= NEXT ================= */
+
+function nextImage(event){
+
+    if(event){
+
+        event.stopPropagation();
+    }
+
+    currentImage++;
+
+    if(currentImage >= galleryImages.length){
+
+        currentImage = 0;
+    }
+
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
+
+/* ================= PREV ================= */
+
+function prevImage(event){
+
+    if(event){
+
+        event.stopPropagation();
+    }
+
+    currentImage--;
+
+    if(currentImage < 0){
+
+        currentImage =
+        galleryImages.length - 1;
+    }
+
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
+
+/* ================================================= */
+/* ================= SWIPE MOBILE ================== */
+/* ================================================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const lightbox =
+document.getElementById("lightbox");
+
+/* TOUCH START */
+
+lightbox.addEventListener("touchstart", e => {
+
+    touchStartX =
+    e.changedTouches[0].screenX;
+});
+
+/* TOUCH END */
+
+lightbox.addEventListener("touchend", e => {
+
+    touchEndX =
+    e.changedTouches[0].screenX;
+
+    handleSwipe();
+});
+
+/* SWIPE DETECTION */
+
+function handleSwipe(){
+
+    const swipeDistance =
+    touchEndX - touchStartX;
+
+    /* SWIPE GAUCHE */
+
+    if(swipeDistance < -50){
+
+        nextImage();
+    }
+
+    /* SWIPE DROITE */
+
+    if(swipeDistance > 50){
+
+        prevImage();
+    }
+}
