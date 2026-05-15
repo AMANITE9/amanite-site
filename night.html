@@ -138,65 +138,68 @@
 
     </div>
 
-    <script>
+<script>
 
-    const galleryImages = [
+/* ================= GALLERY ================= */
 
-        "images/PROMONIGHT1.PNG",
-        "images/PROMONIGHT2.PNG",
-        "images/PROMONIGHT3.PNG",
-        "images/PROMONIGHT4.PNG",
-        "images/PROMONIGHT5.PNG",
-        "images/PROMONIGHT6.PNG"
+const galleryImages = [
 
-    ];
+    "images/PROMONIGHT1.PNG",
+    "images/PROMONIGHT2.PNG",
+    "images/PROMONIGHT3.PNG",
+    "images/PROMONIGHT4.PNG",
+    "images/PROMONIGHT5.PNG",
+    "images/PROMONIGHT6.PNG"
 
-    let currentImage = 0;
+];
 
-    function openGallery(index){
+let currentImage = 0;
 
-        currentImage = index;
+function openGallery(index){
 
-        document.getElementById("lightbox").style.display = "flex";
+    currentImage = index;
 
-        document.getElementById("lightbox-img").src =
-        galleryImages[currentImage];
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
+
+function closeGallery(){
+
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function nextImage(event){
+
+    event.stopPropagation();
+
+    currentImage++;
+
+    if(currentImage >= galleryImages.length){
+
+        currentImage = 0;
     }
 
-    function closeGallery(){
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
 
-        document.getElementById("lightbox").style.display = "none";
+function prevImage(event){
+
+    event.stopPropagation();
+
+    currentImage--;
+
+    if(currentImage < 0){
+
+        currentImage = galleryImages.length - 1;
     }
 
-    function nextImage(event){
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
 
-        event.stopPropagation();
-
-        currentImage++;
-
-        if(currentImage >= galleryImages.length){
-
-            currentImage = 0;
-        }
-
-        document.getElementById("lightbox-img").src =
-        galleryImages[currentImage];
-    }
-
-    function prevImage(event){
-
-        event.stopPropagation();
-
-        currentImage--;
-
-        if(currentImage < 0){
-
-            currentImage = galleryImages.length - 1;
-        }
-
-        document.getElementById("lightbox-img").src =
-        galleryImages[currentImage];
-    }
 /* ================= AUDIO ================= */
 
 const audio =
@@ -205,17 +208,29 @@ document.getElementById("audio-player");
 const bubbles =
 document.querySelectorAll(".demo-bubble");
 
-let currentBubble = null;
+const progressBars =
+document.querySelectorAll(".progress-bar");
 
-bubbles.forEach(bubble => {
+const progressFills =
+document.querySelectorAll(".progress-fill");
+
+const volumeBars =
+document.querySelectorAll(".volume-bar");
+
+let currentBubble = null;
+let currentIndex = 0;
+
+/* ================= PLAY / PAUSE ================= */
+
+bubbles.forEach((bubble, index) => {
 
     bubble.addEventListener("click", () => {
 
-        const track =
-        bubble.dataset.track;
+        const track = bubble.dataset.track;
 
-        if(audio.src.includes(track)
-        && !audio.paused){
+        /* SI MEME MUSIQUE = PAUSE */
+
+        if(audio.src.includes(track) && !audio.paused){
 
             audio.pause();
 
@@ -224,10 +239,14 @@ bubbles.forEach(bubble => {
             return;
         }
 
-        bubbles.forEach(b =>
+        /* RESET */
 
-            b.classList.remove("playing")
-        );
+        bubbles.forEach(b => {
+
+            b.classList.remove("playing");
+        });
+
+        /* NOUVELLE PISTE */
 
         audio.src = track;
 
@@ -236,51 +255,75 @@ bubbles.forEach(bubble => {
         bubble.classList.add("playing");
 
         currentBubble = bubble;
+
+        currentIndex = index;
     });
 });
 
+/* ================= VOLUME ================= */
 
-function changeVolume(value){
+volumeBars.forEach(bar => {
 
-    audio.volume = value;
-}
+    bar.addEventListener("input", () => {
+
+        audio.volume = bar.value;
+    });
+});
+
+/* ================= UPDATE PROGRESS ================= */
 
 audio.addEventListener("timeupdate", () => {
+
+    if(!audio.duration) return;
 
     const progress =
 
     (audio.currentTime / audio.duration) * 100;
 
-    const fills =
-    document.querySelectorAll(".progress-fill");
+    progressFills.forEach(fill => {
 
-    fills.forEach(fill => {
-
-        fill.style.width =
-        progress + "%";
+        fill.style.width = "0%";
     });
 
+    progressFills[currentIndex].style.width =
+    progress + "%";
 });
 
+/* ================= SEEK ================= */
 
-/* CLICK PROGRESS BAR */
+progressBars.forEach((bar, index) => {
 
-function setProgress(event){
+    bar.addEventListener("click", (event) => {
 
-    const bar = event.currentTarget;
+        if(index !== currentIndex) return;
 
-    const rect = bar.getBoundingClientRect();
+        const rect = bar.getBoundingClientRect();
 
-    const clickX = event.clientX - rect.left;
+        const clickX = event.clientX - rect.left;
 
-    const width = rect.width;
+        const percent = clickX / rect.width;
 
-    const percent = clickX / width;
+        audio.currentTime =
+        percent * audio.duration;
+    });
+});
 
-    audio.currentTime =
-    percent * audio.duration;
-}
-    </script>
+/* ================= FIN ================= */
+
+audio.addEventListener("ended", () => {
+
+    bubbles.forEach(b => {
+
+        b.classList.remove("playing");
+    });
+
+    progressFills.forEach(fill => {
+
+        fill.style.width = "0%";
+    });
+});
+
+</script>
 
 </body>
 

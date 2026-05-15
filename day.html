@@ -144,208 +144,191 @@
 
   <script>
 
-    /* ================= GALLERY ================= */
+/* ================= GALLERY ================= */
 
-    const galleryImages = [
+const galleryImages = [
 
-        "images/PROMODAY1.PNG",
-        "images/PROMODAY2.PNG",
-        "images/PROMODAY3.PNG",
-        "images/PROMODAY4.PNG",
-        "images/PROMODAY5.PNG",
-        "images/PROMODAY6.PNG"
+    "images/PROMODAY1.PNG",
+    "images/PROMODAY2.PNG",
+    "images/PROMODAY3.PNG",
+    "images/PROMODAY4.PNG",
+    "images/PROMODAY5.PNG",
+    "images/PROMODAY6.PNG"
 
-    ];
+];
 
-    let currentImage = 0;
+let currentImage = 0;
 
-    function openGallery(index){
+function openGallery(index){
 
-        currentImage = index;
+    currentImage = index;
 
-        document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox").style.display = "flex";
 
-        document.getElementById("lightbox-img").src =
-        galleryImages[currentImage];
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
+
+function closeGallery(){
+
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function nextImage(event){
+
+    event.stopPropagation();
+
+    currentImage++;
+
+    if(currentImage >= galleryImages.length){
+
+        currentImage = 0;
     }
 
-    function closeGallery(){
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
 
-        document.getElementById("lightbox").style.display = "none";
+function prevImage(event){
+
+    event.stopPropagation();
+
+    currentImage--;
+
+    if(currentImage < 0){
+
+        currentImage = galleryImages.length - 1;
     }
 
-    function nextImage(event){
+    document.getElementById("lightbox-img").src =
+    galleryImages[currentImage];
+}
 
-        event.stopPropagation();
+/* ================= AUDIO ================= */
 
-        currentImage++;
+const audio =
+document.getElementById("audio-player");
 
-        if(currentImage >= galleryImages.length){
+const bubbles =
+document.querySelectorAll(".demo-bubble");
 
-            currentImage = 0;
+const progressBars =
+document.querySelectorAll(".progress-bar");
+
+const progressFills =
+document.querySelectorAll(".progress-fill");
+
+const volumeBars =
+document.querySelectorAll(".volume-bar");
+
+let currentBubble = null;
+let currentIndex = 0;
+
+/* ================= PLAY / PAUSE ================= */
+
+bubbles.forEach((bubble, index) => {
+
+    bubble.addEventListener("click", () => {
+
+        const track = bubble.dataset.track;
+
+        /* SI MEME MUSIQUE = PAUSE */
+
+        if(audio.src.includes(track) && !audio.paused){
+
+            audio.pause();
+
+            bubble.classList.remove("playing");
+
+            return;
         }
 
-        document.getElementById("lightbox-img").src =
-        galleryImages[currentImage];
-    }
+        /* RESET */
 
-    function prevImage(event){
+        bubbles.forEach(b => {
 
-        event.stopPropagation();
-
-        currentImage--;
-
-        if(currentImage < 0){
-
-            currentImage = galleryImages.length - 1;
-        }
-
-        document.getElementById("lightbox-img").src =
-        galleryImages[currentImage];
-    }
-
-    /* ================= AUDIO ================= */
-
-    const audio =
-    document.getElementById("audio-player");
-
-    const bubbles =
-    document.querySelectorAll(".demo-bubble");
-
-    const progressBars =
-    document.querySelectorAll(".progress-fill");
-
-    let currentBubble = null;
-
-    /* ================= CREATION ICONES ================= */
-
-    bubbles.forEach(bubble => {
-
-        const icon =
-        document.createElement("div");
-
-        icon.classList.add("play-icon");
-
-        icon.innerHTML = "▶";
-
-        bubble.appendChild(icon);
-    });
-
-    /* ================= PLAY / PAUSE ================= */
-
-    bubbles.forEach(bubble => {
-
-        bubble.addEventListener("click", () => {
-
-            const track =
-            bubble.dataset.track;
-
-            const icon =
-            bubble.querySelector(".play-icon");
-
-            /* MEME PISTE = PAUSE */
-
-            if(audio.src.includes(track)
-            && !audio.paused){
-
-                audio.pause();
-
-                bubble.classList.remove("playing");
-
-                icon.innerHTML = "▶";
-
-                return;
-            }
-
-            /* RESET AUTRES BULLES */
-
-            bubbles.forEach(b => {
-
-                b.classList.remove("playing");
-
-                const otherIcon =
-                b.querySelector(".play-icon");
-
-                otherIcon.innerHTML = "▶";
-            });
-
-            /* NOUVELLE PISTE */
-
-            audio.src = track;
-
-            audio.play();
-
-            bubble.classList.add("playing");
-
-            icon.innerHTML = "❚❚";
-
-            currentBubble = bubble;
+            b.classList.remove("playing");
         });
+
+        /* NOUVELLE PISTE */
+
+        audio.src = track;
+
+        audio.play();
+
+        bubble.classList.add("playing");
+
+        currentBubble = bubble;
+
+        currentIndex = index;
+    });
+});
+
+/* ================= VOLUME ================= */
+
+volumeBars.forEach(bar => {
+
+    bar.addEventListener("input", () => {
+
+        audio.volume = bar.value;
+    });
+});
+
+/* ================= UPDATE PROGRESS ================= */
+
+audio.addEventListener("timeupdate", () => {
+
+    if(!audio.duration) return;
+
+    const progress =
+
+    (audio.currentTime / audio.duration) * 100;
+
+    progressFills.forEach(fill => {
+
+        fill.style.width = "0%";
     });
 
-    /* ================= VOLUME ================= */
+    progressFills[currentIndex].style.width =
+    progress + "%";
+});
 
-    function changeVolume(value){
+/* ================= SEEK ================= */
 
-        audio.volume = value;
-    }
+progressBars.forEach((bar, index) => {
 
-    /* ================= PROGRESSION ================= */
+    bar.addEventListener("click", (event) => {
 
-    audio.addEventListener("timeupdate", () => {
-
-        if(!audio.duration) return;
-
-        const progress =
-
-        (audio.currentTime / audio.duration) * 100;
-
-        progressBars.forEach(bar => {
-
-            bar.style.width =
-            progress + "%";
-        });
-    });
-
-    /* ================= CLIQUER BARRE ================= */
-
-    function setProgress(event){
-
-        const bar = event.currentTarget;
+        if(index !== currentIndex) return;
 
         const rect = bar.getBoundingClientRect();
 
         const clickX = event.clientX - rect.left;
 
-        const width = rect.width;
-
-        const percent = clickX / width;
+        const percent = clickX / rect.width;
 
         audio.currentTime =
         percent * audio.duration;
-    }
+    });
+});
 
-    /* ================= FIN MUSIQUE ================= */
+/* ================= FIN ================= */
 
-    audio.addEventListener("ended", () => {
+audio.addEventListener("ended", () => {
 
-        if(currentBubble){
+    bubbles.forEach(b => {
 
-            currentBubble.classList.remove("playing");
-
-            const icon =
-            currentBubble.querySelector(".play-icon");
-
-            icon.innerHTML = "▶";
-        }
-
-        progressBars.forEach(bar => {
-
-            bar.style.width = "0%";
-        });
+        b.classList.remove("playing");
     });
 
+    progressFills.forEach(fill => {
+
+        fill.style.width = "0%";
+    });
+});
+
 </script>
+
 
 
 </body>

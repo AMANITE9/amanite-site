@@ -679,11 +679,22 @@ body{
 
 /* ================= PLAY ICON ===================== */
 
-.play-icon{
+/* ================= MOBILE VOLUME FIX ================= */
 
-    display:none;
-}
 @media (max-width:768px){
+
+    .volume-bar{
+
+        z-index:99999;
+
+        pointer-events:auto;
+
+        -webkit-appearance:none;
+
+        appearance:none;
+    }
+
+    /* DAY */
 
     .volume-1{
 
@@ -697,6 +708,8 @@ body{
         top:54.5%;
     }
 
+    /* NIGHT */
+
     .night-volume-1{
 
         left:73%;
@@ -709,6 +722,7 @@ body{
         top:54.5%;
     }
 }
+
 /* ================= TAP EFFECT ================= */
 
 .bubble-link,
@@ -787,3 +801,7 @@ body{
         opacity:0.94;
     }
 }
+.play-icon{
+    display:none;
+}
+
