@@ -320,3 +320,31 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+/* ================================================= */
+/* ================= PRELOAD ======================= */
+/* ================================================= */
+
+const preloadImages = [
+
+    "images/transition.PNG",
+
+    "images/HOME.PNG",
+    "images/DAY.PNG",
+    "images/NIGHT.PNG",
+    "images/BOOKING.PNG",
+
+    "images/PROMODAY1.PNG",
+    "images/PROMODAY2.PNG",
+    "images/PROMODAY3.PNG",
+
+    "images/PROMONIGHT1.PNG",
+    "images/PROMONIGHT2.PNG",
+    "images/PROMONIGHT3.PNG"
+];
+
+preloadImages.forEach(src => {
+
+    const img = new Image();
+
+    img.src = src;
+});

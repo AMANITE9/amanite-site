@@ -2,47 +2,86 @@
 <html lang="fr">
 
 <head>
+
+    <!-- PRELOAD PRIORITAIRE TRANSITION -->
+
+    <link rel="preload"
+          as="image"
+          href="images/transition.PNG"
+          fetchpriority="high">
+
+    <!-- PRELOAD PAGE ACTUELLE -->
+
+    <link rel="preload"
+          as="image"
+          href="images/HOME.PNG">
+
+    <!-- PRELOAD PAGES SUIVANTES -->
+
+    <link rel="preload"
+          as="image"
+          href="images/DAY.PNG">
+
+    <link rel="preload"
+          as="image"
+          href="images/NIGHT.PNG">
+
+    <link rel="preload"
+          as="image"
+          href="images/BOOKING.PNG">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Amanite</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body>
 
     <!-- FOND FLOU -->
+
     <div class="blur-background"
          style="background-image:url('images/HOME.PNG')">
     </div>
 
     <!-- FILTRE SOMBRE -->
+
     <div class="dark-overlay"></div>
 
     <!-- IMAGE PRINCIPALE -->
+
     <div class="page-container">
 
         <img src="images/HOME.PNG"
              class="page-image">
-<!-- ZONES CLIQUABLES -->
 
-<a href="day.html"
-   class="bubble-link home-day">
-</a>
+        <!-- ZONES CLIQUABLES -->
 
-<a href="night.html"
-   class="bubble-link home-night">
-</a>
+        <a href="day.html"
+           class="bubble-link home-day">
+        </a>
 
-<a href="booking.html"
-   class="bubble-link home-booking">
-</a>
+        <a href="night.html"
+           class="bubble-link home-night">
+        </a>
+
+        <a href="booking.html"
+           class="bubble-link home-booking">
+        </a>
+
     </div>
 
+    <!-- TRANSITION -->
+
     <div class="fade-transition"></div>
-    
-  <script>
+
+<script>
 
 /* ================================================= */
 /* ================= PAGE TRANSITION =============== */
@@ -89,10 +128,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
-
-
 </body>
 
 </html>
-
 

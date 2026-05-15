@@ -2,7 +2,42 @@
 <html lang="fr">
 
 <head>
+
+    <!-- PRELOAD PRIORITAIRE TRANSITION -->
+
+    <link rel="preload"
+          as="image"
+          href="images/transition.PNG"
+          fetchpriority="high">
+
+    <!-- PRELOAD PAGE ACTUELLE -->
+
+    <link rel="preload"
+          as="image"
+          href="images/DAY.PNG">
+
+    <!-- PRELOAD PAGES SUIVANTES -->
+
+    <link rel="preload"
+          as="image"
+          href="images/NIGHT.PNG">
+
+    <link rel="preload"
+          as="image"
+          href="images/BOOKING.PNG">
+
+    <!-- PRELOAD AUDIO -->
+
+    <link rel="preload"
+          as="audio"
+          href="audio/LOUNGEHOUSE.mp3">
+
+    <link rel="preload"
+          as="audio"
+          href="audio/DEEPHOUSE.mp3">
+
     <meta charset="UTF-8">
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
@@ -10,22 +45,27 @@
 
     <link rel="stylesheet"
           href="style.css">
+
 </head>
 
 <body>
 
     <!-- FOND FLOU -->
+
     <div class="blur-background"
          style="background-image:url('images/DAY.PNG')">
     </div>
 
     <!-- FILTRE -->
+
     <div class="dark-overlay"></div>
 
     <!-- PAGE -->
+
     <div class="page-container">
 
         <!-- IMAGE -->
+
         <img src="images/DAY.PNG"
              class="page-image">
 
@@ -95,24 +135,16 @@
     <div id="lightbox"
          class="lightbox">
 
-        <!-- ZONE GAUCHE -->
-
         <div class="lightbox-left"
              onclick="prevImage(event)">
         </div>
 
-        <!-- IMAGE -->
-
         <img id="lightbox-img"
              class="lightbox-img">
-
-        <!-- FLECHES -->
 
         <div class="gallery-arrow arrow-left">‹</div>
 
         <div class="gallery-arrow arrow-right">›</div>
-
-        <!-- ZONE DROITE -->
 
         <div class="lightbox-right"
              onclick="nextImage(event)">
@@ -211,7 +243,6 @@ document.querySelectorAll(".progress-bar");
 const progressFills =
 document.querySelectorAll(".progress-fill");
 
-let currentBubble = null;
 let currentIndex = 0;
 
 /* ================= PLAY / PAUSE ================= */
@@ -241,8 +272,6 @@ bubbles.forEach((bubble, index) => {
         audio.play();
 
         bubble.classList.add("playing");
-
-        currentBubble = bubble;
 
         currentIndex = index;
     });
@@ -350,6 +379,7 @@ function handleSwipe(){
         prevImage();
     }
 }
+
 /* ================================================= */
 /* ================= PAGE TRANSITION =============== */
 /* ================================================= */
@@ -391,10 +421,9 @@ window.addEventListener("DOMContentLoaded", () => {
             }, 800);
         });
     });
-})
+});
 
 </script>
-
 
 </body>
 
