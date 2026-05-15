@@ -774,18 +774,6 @@ body{
 
     inset:0;
 
-    background:
-    linear-gradient(
-    rgba(255,255,255,0.08),
-    rgba(255,255,255,0.08)
-    ),
-    url("images/transition.PNG");
-
-  background-size:contain;
-background-repeat:no-repeat;
-background-position:center;
-background-color:black;
-
     z-index:999999;
 
     pointer-events:none;
@@ -793,8 +781,55 @@ background-color:black;
     opacity:1;
 
     transition:opacity 0.9s ease;
+
+    overflow:hidden;
 }
 
+/* ================= FOND FLOU ================= */
+
+.fade-transition::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.35)
+    ),
+    url("images/transition.PNG");
+
+    background-size:cover;
+
+    background-position:center;
+
+    filter:blur(30px) brightness(0.6);
+
+    transform:scale(1.2);
+}
+
+/* ================= IMAGE CENTRALE ================= */
+
+.fade-transition::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    url("images/transition.PNG");
+
+    background-size:contain;
+
+    background-repeat:no-repeat;
+
+    background-position:center;
+}
 
 /* ================= PAGE VISIBLE ================= */
 
