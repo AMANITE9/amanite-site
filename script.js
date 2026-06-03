@@ -118,7 +118,11 @@ const galleryImages = [
     "images/PROMODAY3.PNG",
     "images/PROMODAY4.PNG",
     "images/PROMODAY5.PNG",
-    "images/PROMODAY6.PNG"
+    "images/PROMODAY6.PNG",
+    "images/PROMODAY7.PNG",
+    "images/PROMODAY8.PNG",
+    "images/PROMODAY9.PNG",
+    
 
 ];
 
