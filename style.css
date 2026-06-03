@@ -18,8 +18,7 @@ body{
 
     min-height:100vh;
 
-    overflow-x:hidden;
-overflow-y:auto;
+    overflow:hidden;
 
     display:flex;
     justify-content:center;
@@ -112,13 +111,13 @@ overflow-y:auto;
 
         position:relative;
 
-        min-height:115vh;
+        height:100vh;
 
         display:flex;
         justify-content:center;
         align-items:center;
 
-        overflow:visible;
+        overflow:hidden;
     }
 
     .page-image{
@@ -132,7 +131,6 @@ overflow-y:auto;
     }
 
 }
-
 
 /* ========================= */
 /* ZONES CLIQUABLES */
@@ -1026,16 +1024,5 @@ overflow-y:auto;
 .fade-transition.hidden{
 
     opacity:0;
-}
-@media (max-width:768px){
-
-    body{
-
-        overflow-y:auto;
-        overflow-x:hidden;
-
-        -webkit-overflow-scrolling:touch;
-    }
-
 }
 
