@@ -1027,3 +1027,13 @@ body{
 
     opacity:0;
 }
+@media (max-width:768px){
+
+    body{
+
+        overflow-y:auto;
+
+        -webkit-overflow-scrolling:touch;
+    }
+
+}
