@@ -621,20 +621,24 @@ body{
     position:absolute;
 
     width:40%;
-    height:3px;
+    height:8px;
 
     background:rgba(255,255,255,0.18);
 
     border-radius:999px;
 
-    overflow:hidden;
+    overflow:visible;
 
     z-index:500;
 
     pointer-events:auto;
 
     cursor:pointer;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.18);
 }
+
 
 /* DAY */
 
@@ -666,15 +670,19 @@ body{
 
 /* ================= REMPLISSAGE =================== */
 
-.progress-fill{
+   .progress-fill{
+
+    position:relative;
 
     width:0%;
 
     height:100%;
 
-    background:white;
+    border-radius:999px;
 
     pointer-events:none;
+
+    animation:progressRGB 5s linear infinite;
 }
 
 /* ================= TAP EFFECT ================= */
@@ -1035,6 +1043,40 @@ body{
         overflow-y:auto;
 
         -webkit-overflow-scrolling:touch;
+    }
+
+}
+
+@keyframes progressRGB{
+
+    0%{
+
+        background:#ff7ac3;
+        box-shadow:0 0 12px #ff7ac3;
+    }
+
+    25%{
+
+        background:#7abfff;
+        box-shadow:0 0 12px #7abfff;
+    }
+
+    50%{
+
+        background:#7affd4;
+        box-shadow:0 0 12px #7affd4;
+    }
+
+    75%{
+
+        background:#c68cff;
+        box-shadow:0 0 12px #c68cff;
+    }
+
+    100%{
+
+        background:#ff7ac3;
+        box-shadow:0 0 12px #ff7ac3;
     }
 
 }
