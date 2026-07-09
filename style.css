@@ -576,7 +576,7 @@ body{
 
     position:absolute;
 
-    width:25%;
+    width:24.5%;
     aspect-ratio:1/1;
 
     border-radius:50%;
@@ -591,13 +591,13 @@ body{
 .audio-zone-1{
 
     left:36%;
-    top:21.5%;
+    top:21.8%;
 }
 
 .audio-zone-2{
 
     left:36%;
-    top:39.5%;
+    top:39.8%;
 }
 
 /* ================= NIGHT AUDIO =================== */
@@ -605,13 +605,13 @@ body{
 .night-audio-1{
 
     left:36%;
-    top:22%;
+    top:22.2%;
 }
 
 .night-audio-2{
 
-    left:37.5%;
-    top:41.2%;
+    left:37.8%;
+    top:41.4%;
 }
 
 /* ================= BARRES ======================== */
