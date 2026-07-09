@@ -737,7 +737,7 @@ body{
 
     animation:
         rgbPulseDay 4s linear infinite,
-        innerShimmer 2.8s ease-in-out infinite;
+       
 }
 
 .night-bubble.playing{
@@ -746,7 +746,7 @@ body{
 
     animation:
         rgbPulseNight 4s linear infinite,
-        innerShimmer 2.8s ease-in-out infinite;
+       
 }
 
 
@@ -874,23 +874,7 @@ body{
 }
 
 
-@keyframes innerShimmer{
 
-    0%{
-        filter:brightness(1);
-        opacity:0.9;
-    }
-
-    50%{
-        filter:brightness(1.28) saturate(1.25);
-        opacity:1;
-    }
-
-    100%{
-        filter:brightness(1);
-        opacity:0.9;
-    }
-}
 
 
 
