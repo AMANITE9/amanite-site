@@ -681,9 +681,24 @@ body{
     border-radius:999px;
 
     pointer-events:none;
-
-    animation:progressRGB 5s linear infinite;
 }
+
+/* DAY */
+
+.progress-1 .progress-fill,
+.progress-2 .progress-fill{
+
+    animation:progressRGBDay 5s linear infinite;
+}
+
+/* NIGHT */
+
+.night-progress-1 .progress-fill,
+.night-progress-2 .progress-fill{
+
+    animation:progressRGBNight 5s linear infinite;
+}
+
 
 /* ================= TAP EFFECT ================= */
 
@@ -716,19 +731,29 @@ body{
 }
 
 /* ================= PLAYER ACTIVE ================= */
-
-.demo-bubble.playing{
+.day-bubble.playing{
 
     border-radius:50%;
 
     animation:
-    rgbPulse 4s linear infinite,
-    bubbleBreath 1.8s ease-in-out infinite;
+        rgbPulseDay 4s linear infinite,
+        innerShimmer 2.8s ease-in-out infinite;
 }
+
+.night-bubble.playing{
+
+    border-radius:50%;
+
+    animation:
+        rgbPulseNight 4s linear infinite,
+        innerShimmer 2.8s ease-in-out infinite;
+}
+
+
 
 /* ================= RGB COLORS ================= */
 
-@keyframes rgbPulse{
+@keyframes rgbPulseNight{
 
     0%{
 
@@ -790,32 +815,83 @@ body{
         0 0 55px rgba(255,120,180,0.25);
     }
 }
-
-/* ================= BREATH ================= */
-
-@keyframes bubbleBreath{
+@keyframes rgbPulseDay{
 
     0%{
 
-        transform:scale(1);
+        background:rgba(168,216,255,.16);
 
-        opacity:0.9;
+        box-shadow:
+        inset 0 0 28px rgba(168,216,255,.60),
+        inset 0 0 55px rgba(168,216,255,.30),
+        0 0 28px rgba(168,216,255,.55),
+        0 0 55px rgba(168,216,255,.25);
+    }
+
+    25%{
+
+        background:rgba(126,220,235,.16);
+
+        box-shadow:
+        inset 0 0 28px rgba(126,220,235,.60),
+        inset 0 0 55px rgba(126,220,235,.30),
+        0 0 28px rgba(126,220,235,.55),
+        0 0 55px rgba(126,220,235,.25);
     }
 
     50%{
 
-        transform:scale(1.06);
+        background:rgba(255,242,196,.16);
 
-        opacity:1;
+        box-shadow:
+        inset 0 0 28px rgba(255,242,196,.60),
+        inset 0 0 55px rgba(255,242,196,.30),
+        0 0 28px rgba(255,242,196,.55),
+        0 0 55px rgba(255,242,196,.25);
+    }
+
+    75%{
+
+        background:rgba(255,217,142,.16);
+
+        box-shadow:
+        inset 0 0 28px rgba(255,217,142,.60),
+        inset 0 0 55px rgba(255,217,142,.30),
+        0 0 28px rgba(255,217,142,.55),
+        0 0 55px rgba(255,217,142,.25);
     }
 
     100%{
 
-        transform:scale(1);
+        background:rgba(168,216,255,.16);
 
+        box-shadow:
+        inset 0 0 28px rgba(168,216,255,.60),
+        inset 0 0 55px rgba(168,216,255,.30),
+        0 0 28px rgba(168,216,255,.55),
+        0 0 55px rgba(168,216,255,.25);
+    }
+}
+
+
+@keyframes innerShimmer{
+
+    0%{
+        filter:brightness(1);
+        opacity:0.9;
+    }
+
+    50%{
+        filter:brightness(1.28) saturate(1.25);
+        opacity:1;
+    }
+
+    100%{
+        filter:brightness(1);
         opacity:0.9;
     }
 }
+
 
 
 .play-icon{
@@ -1047,7 +1123,7 @@ body{
 
 }
 
-@keyframes progressRGB{
+@keyframes progressRGBNight{
 
     0%{
 
@@ -1079,4 +1155,37 @@ body{
         box-shadow:0 0 12px #ff7ac3;
     }
 
+}
+
+@keyframes progressRGBDay{
+
+    0%{
+
+        background:#A8D8FF;
+        box-shadow:0 0 14px #A8D8FF;
+    }
+
+    25%{
+
+        background:#7EDCEB;
+        box-shadow:0 0 14px #7EDCEB;
+    }
+
+    50%{
+
+        background:#FFF2C4;
+        box-shadow:0 0 14px #FFF2C4;
+    }
+
+    75%{
+
+        background:#FFD98E;
+        box-shadow:0 0 14px #FFD98E;
+    }
+
+    100%{
+
+        background:#A8D8FF;
+        box-shadow:0 0 14px #A8D8FF;
+    }
 }
