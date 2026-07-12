@@ -36,22 +36,16 @@
           as="image"
           href="images/BOOKING.PNG">
 
-    <!-- PRELOAD AUDIO -->
-
-    <link rel="preload"
-          as="audio"
-          href="audio/LOUNGEHOUSE.mp3">
-
-    <link rel="preload"
-          as="audio"
-          href="audio/DEEPHOUSE.mp3">
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
     <title>Day</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="images/favicon-amanite.png">
 
     <link rel="stylesheet"
           href="style.css">
@@ -399,50 +393,9 @@ function handleSwipe(){
     }
 }
 
-/* ================================================= */
-/* ================= PAGE TRANSITION =============== */
-/* ================================================= */
-
-window.addEventListener("DOMContentLoaded", () => {
-
-    const fade =
-    document.querySelector(".fade-transition");
-
-    if(!fade) return;
-
-    /* ================= FADE IN ================= */
-
-    setTimeout(() => {
-
-        fade.classList.add("hidden");
-
-    }, 50);
-
-    /* ================= FADE OUT ================= */
-
-    document.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener("click", e => {
-
-            const href =
-            link.getAttribute("href");
-
-            if(!href) return;
-
-            e.preventDefault();
-
-            fade.classList.remove("hidden");
-
-            setTimeout(() => {
-
-                window.location.href = href;
-
-            }, 800);
-        });
-    });
-});
-
 </script>
+
+<script src="transitions.js"></script>
 
 </body>
 
