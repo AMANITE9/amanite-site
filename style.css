@@ -478,6 +478,16 @@ body{
 .ambient-atmosphere span:nth-child(26){ left:17%; top:75%; animation-delay:-4s; }
 .ambient-atmosphere span:nth-child(27){ left:58%; top:78%; animation-delay:-11s; }
 .ambient-atmosphere span:nth-child(28){ left:92%; top:88%; animation-delay:-7s; }
+.ambient-atmosphere span:nth-child(29){ left:16%; top:16%; animation-delay:-9s; }
+.ambient-atmosphere span:nth-child(30){ left:42%; top:22%; animation-delay:-2s; }
+.ambient-atmosphere span:nth-child(31){ left:80%; top:27%; animation-delay:-12s; }
+.ambient-atmosphere span:nth-child(32){ left:30%; top:39%; animation-delay:-5s; }
+.ambient-atmosphere span:nth-child(33){ left:62%; top:46%; animation-delay:-14s; }
+.ambient-atmosphere span:nth-child(34){ left:88%; top:57%; animation-delay:-7s; }
+.ambient-atmosphere span:nth-child(35){ left:13%; top:68%; animation-delay:-11s; }
+.ambient-atmosphere span:nth-child(36){ left:50%; top:71%; animation-delay:-3s; }
+.ambient-atmosphere span:nth-child(37){ left:76%; top:83%; animation-delay:-13s; }
+.ambient-atmosphere span:nth-child(38){ left:34%; top:92%; animation-delay:-6s; }
 
 /* DAY : poussière chaude, or solaire. */
 .page-day .ambient-atmosphere span{
@@ -527,6 +537,20 @@ body{
 .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(22){ animation-delay:0.84s; }
 .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(23){ animation-delay:0.96s; }
 .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(24){ animation-delay:1.08s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(25){ animation-delay:1.2s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(26){ animation-delay:1.32s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(27){ animation-delay:1.44s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(28){ animation-delay:1.56s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(29){ animation-delay:1.68s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(30){ animation-delay:1.8s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(31){ animation-delay:1.92s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(32){ animation-delay:2.04s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(33){ animation-delay:2.16s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(34){ animation-delay:2.28s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(35){ animation-delay:2.4s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(36){ animation-delay:2.52s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(37){ animation-delay:2.64s; }
+.page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(38){ animation-delay:2.76s; }
 
 @keyframes amaniteDaySunParticle{
 
@@ -620,12 +644,12 @@ body{
         display:none;
     }
 
-    .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(-n+19){
+    .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(-n+26){
 
         display:block;
     }
 
-    .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(n+20){
+    .page-day .ambient-atmosphere.music-active .day-music-particle:nth-child(n+27){
 
         display:none;
     }
@@ -1838,6 +1862,21 @@ body{
     filter:blur(18px);
 
     opacity:1;
+}
+
+/* ARRIVÉE : la brume s'écarte une fois l'image de la page prête. */
+.fade-transition.is-entering.hidden::before{
+
+    filter:blur(48px) brightness(0.46);
+
+    transform:scale(1.32);
+}
+
+.fade-transition.is-entering.hidden::after{
+
+    transform:scale(1.16);
+
+    filter:blur(28px);
 }
 @media (max-width:768px){
 

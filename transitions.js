@@ -19,7 +19,59 @@
         fade.setAttribute("aria-hidden", "true");
     }
 
-    window.addEventListener("pageshow", hideTransition);
+    function waitForPrimaryImage(){
+
+        const image = document.querySelector(".page-image");
+
+        if(!image || (image.complete && image.naturalWidth > 0)){
+
+            return Promise.resolve();
+        }
+
+        return new Promise(resolve => {
+
+            const finish = () => resolve();
+
+            image.addEventListener("load", finish, { once:true });
+            image.addEventListener("error", finish, { once:true });
+
+            window.setTimeout(finish, 2500);
+        });
+    }
+
+    function beginEntrance(){
+
+        const fade = document.querySelector(".fade-transition");
+
+        if(!fade) return;
+
+        fade.classList.remove("is-transitioning");
+        fade.classList.add("is-entering");
+        fade.setAttribute("aria-hidden", "false");
+
+        requestAnimationFrame(() => {
+
+            requestAnimationFrame(() => {
+
+                fade.classList.add("hidden");
+                fade.setAttribute("aria-hidden", "true");
+
+                window.setTimeout(() => {
+
+                    fade.classList.remove("is-entering");
+
+                }, 1150);
+            });
+        });
+    }
+
+    window.addEventListener("pageshow", event => {
+
+        if(event.persisted){
+
+            hideTransition();
+        }
+    });
 
     window.addEventListener("DOMContentLoaded", () => {
 
@@ -27,7 +79,14 @@
 
         if(!fade) return;
 
-        requestAnimationFrame(hideTransition);
+        if(prefersReducedMotion){
+
+            hideTransition();
+
+        }else{
+
+            waitForPrimaryImage().then(beginEntrance);
+        }
 
         document.querySelectorAll("a[href]").forEach(link => {
 
