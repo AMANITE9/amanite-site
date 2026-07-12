@@ -14,6 +14,7 @@
 
         if(!fade) return;
 
+        fade.classList.remove("is-transitioning");
         fade.classList.add("hidden");
         fade.setAttribute("aria-hidden", "true");
     }
@@ -55,6 +56,7 @@
                     return;
                 }
 
+                fade.classList.add("is-transitioning");
                 fade.classList.remove("hidden");
                 fade.setAttribute("aria-hidden", "false");
 
@@ -62,7 +64,7 @@
 
                     window.location.assign(href);
 
-                }, 560);
+                }, 1100);
             });
         });
     });

@@ -74,7 +74,7 @@
 
 </head>
 
-<body>
+<body class="page-night">
 
     <!-- FOND FLOU -->
 
@@ -94,6 +94,22 @@
 
         <img src="images/NIGHT.PNG"
              class="page-image">
+
+        <div class="ambient-atmosphere"
+             aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+            <i class="night-horizon-ray ray-three"></i>
+            <i class="night-horizon-ray ray-four"></i>
+            <i class="night-horizon-ray ray-five"></i>
+            <i class="night-horizon-ray ray-six"></i>
+        </div>
 
         <!-- ZONES CLIQUABLES -->
 
@@ -278,6 +294,9 @@ document.getElementById("audio-player");
 const bubbles =
 document.querySelectorAll(".demo-bubble");
 
+const nightAtmosphere =
+document.querySelector(".page-night .ambient-atmosphere");
+
 const progressBars =
 document.querySelectorAll(".progress-bar");
 
@@ -301,6 +320,8 @@ bubbles.forEach((bubble, index) => {
 
             bubble.classList.remove("playing");
 
+            nightAtmosphere?.classList.remove("music-active");
+
             return;
         }
 
@@ -314,6 +335,8 @@ bubbles.forEach((bubble, index) => {
         audio.play();
 
         bubble.classList.add("playing");
+
+        nightAtmosphere?.classList.add("music-active");
 
         currentBubble = bubble;
 
@@ -372,6 +395,13 @@ audio.addEventListener("ended", () => {
 
         fill.style.width = "0%";
     });
+
+    nightAtmosphere?.classList.remove("music-active");
+});
+
+audio.addEventListener("pause", () => {
+
+    nightAtmosphere?.classList.remove("music-active");
 });
 
 /* ================= LIGHTBOX ================= */

@@ -55,7 +55,7 @@
 
 </head>
 
-<body>
+<body class="page-day">
 
     <!-- FOND FLOU -->
 
@@ -75,6 +75,24 @@
 
         <img src="images/DAY.PNG"
              class="page-image">
+
+        <div class="ambient-atmosphere"
+             aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+            <span class="day-music-particle"></span>
+        </div>
 
         <!-- ZONES CLIQUABLES -->
 
@@ -250,6 +268,9 @@ document.getElementById("audio-player");
 const bubbles =
 document.querySelectorAll(".demo-bubble");
 
+const dayAtmosphere =
+document.querySelector(".page-day .ambient-atmosphere");
+
 const progressBars =
 document.querySelectorAll(".progress-bar");
 
@@ -272,6 +293,8 @@ bubbles.forEach((bubble, index) => {
 
             bubble.classList.remove("playing");
 
+            dayAtmosphere?.classList.remove("music-active");
+
             return;
         }
 
@@ -285,6 +308,8 @@ bubbles.forEach((bubble, index) => {
         audio.play();
 
         bubble.classList.add("playing");
+
+        dayAtmosphere?.classList.add("music-active");
 
         currentIndex = index;
     });
@@ -341,6 +366,14 @@ audio.addEventListener("ended", () => {
 
         fill.style.width = "0%";
     });
+
+    dayAtmosphere?.classList.remove("music-active");
+
+});
+
+audio.addEventListener("pause", () => {
+
+    dayAtmosphere?.classList.remove("music-active");
 });
 
 /* ================= LIGHTBOX ================= */
