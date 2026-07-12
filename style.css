@@ -825,11 +825,11 @@ body{
 /* RETOUR ACCUEIL : MAISON SOUS LES BULLES DAY / NIGHT */
 .booking-home{
 
-    width:9%;
+    width:11%;
     aspect-ratio:1/1;
 
-    left:45.5%;
-    top:91%;
+    left:1.3%;
+    top:82.3%;
 
     display:grid;
     place-items:center;
