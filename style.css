@@ -1517,6 +1517,38 @@ body{
     pointer-events:none;
 }
 
+.progress-time{
+
+    position:absolute;
+
+    left:calc(100% + 10px);
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:rgba(255,245,226,0.86);
+
+    font-family:"Palatino Linotype", Palatino, serif;
+    font-size:clamp(8px, 1.2vw, 12px);
+    font-variant-numeric:tabular-nums;
+    letter-spacing:0.04em;
+    line-height:1;
+    white-space:nowrap;
+
+    text-shadow:0 0 7px rgba(255,222,181,0.72);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity 0.35s ease;
+}
+
+.progress-bar.is-active .progress-time{
+
+    opacity:0.9;
+}
+
 /* DAY */
 
 .progress-1 .progress-fill,

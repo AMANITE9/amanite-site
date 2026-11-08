@@ -139,12 +139,18 @@
                  id="progress-fill">
             </div>
 
+            <span class="progress-time"
+                  aria-live="off"></span>
+
         </div>
 
         <div class="progress-bar night-progress-2">
 
             <div class="progress-fill">
             </div>
+
+            <span class="progress-time"
+                  aria-live="off"></span>
 
         </div>
 
@@ -300,14 +306,43 @@ document.querySelectorAll(".progress-bar");
 const progressFills =
 document.querySelectorAll(".progress-fill");
 
+const progressTimes =
+document.querySelectorAll(".progress-time");
+
 let currentBubble = null;
 let currentIndex = 0;
 
-function resetProgress(){
+function formatAudioTime(seconds){
+
+    if(!Number.isFinite(seconds) || seconds < 0) return "--:--";
+
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds =
+    Math.floor(seconds % 60).toString().padStart(2, "0");
+
+    return minutes + ":" + remainingSeconds;
+}
+
+function clearProgressFills(){
 
     progressFills.forEach(fill => {
 
         fill.style.width = "0%";
+    });
+}
+
+function resetProgress(){
+
+    clearProgressFills();
+
+    progressBars.forEach(bar => {
+
+        bar.classList.remove("is-active");
+    });
+
+    progressTimes.forEach(time => {
+
+        time.textContent = "";
     });
 }
 
@@ -318,11 +353,18 @@ function updateProgress(){
     const progress =
     (audio.currentTime / audio.duration) * 100;
 
-    resetProgress();
+    clearProgressFills();
 
     if(progressFills[currentIndex]){
 
         progressFills[currentIndex].style.width = progress + "%";
+    }
+
+    if(progressTimes[currentIndex]){
+
+        progressTimes[currentIndex].textContent =
+        formatAudioTime(audio.currentTime) + " / " +
+        formatAudioTime(audio.duration);
     }
 }
 
@@ -353,6 +395,13 @@ bubbles.forEach((bubble, index) => {
         currentIndex = index;
 
         resetProgress();
+
+        progressBars[currentIndex]?.classList.add("is-active");
+
+        if(progressTimes[currentIndex]){
+
+            progressTimes[currentIndex].textContent = "0:00 / --:--";
+        }
 
         audio.src = track;
 
