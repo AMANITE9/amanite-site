@@ -303,6 +303,29 @@ document.querySelectorAll(".progress-fill");
 let currentBubble = null;
 let currentIndex = 0;
 
+function resetProgress(){
+
+    progressFills.forEach(fill => {
+
+        fill.style.width = "0%";
+    });
+}
+
+function updateProgress(){
+
+    if(!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+
+    const progress =
+    (audio.currentTime / audio.duration) * 100;
+
+    resetProgress();
+
+    if(progressFills[currentIndex]){
+
+        progressFills[currentIndex].style.width = progress + "%";
+    }
+}
+
 /* ================= PLAY / PAUSE ================= */
 
 bubbles.forEach((bubble, index) => {
@@ -327,9 +350,20 @@ bubbles.forEach((bubble, index) => {
             b.classList.remove("playing");
         });
 
+        currentIndex = index;
+
+        resetProgress();
+
         audio.src = track;
 
-        audio.play();
+        audio.load();
+
+        audio.play().catch(() => {
+
+            bubble.classList.remove("playing");
+            nightAtmosphere?.classList.remove("music-active");
+            resetProgress();
+        });
 
         bubble.classList.add("playing");
 
@@ -337,28 +371,15 @@ bubbles.forEach((bubble, index) => {
 
         currentBubble = bubble;
 
-        currentIndex = index;
     });
 });
 
 /* ================= UPDATE PROGRESS ================= */
 
-audio.addEventListener("timeupdate", () => {
-
-    if(!audio.duration) return;
-
-    const progress =
-
-    (audio.currentTime / audio.duration) * 100;
-
-    progressFills.forEach(fill => {
-
-        fill.style.width = "0%";
-    });
-
-    progressFills[currentIndex].style.width =
-    progress + "%";
-});
+audio.addEventListener("timeupdate", updateProgress);
+audio.addEventListener("loadedmetadata", updateProgress);
+audio.addEventListener("durationchange", updateProgress);
+audio.addEventListener("playing", updateProgress);
 
 /* ================= SEEK ================= */
 
@@ -388,10 +409,7 @@ audio.addEventListener("ended", () => {
         b.classList.remove("playing");
     });
 
-    progressFills.forEach(fill => {
-
-        fill.style.width = "0%";
-    });
+    resetProgress();
 
     nightAtmosphere?.classList.remove("music-active");
 });

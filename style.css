@@ -1303,6 +1303,123 @@ body{
     cursor:pointer;
 }
 
+/* Repère de lecture, visible avant le lancement du set. */
+.audio-zone::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:0;
+    height:0;
+
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+    border-left:12px solid rgba(255,245,226,0.86);
+
+    transform:translate(-42%, -50%) scale(1);
+
+    filter:drop-shadow(0 0 7px rgba(255,222,181,0.72));
+
+    opacity:0.78;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    filter 0.35s ease;
+}
+
+.night-bubble::before{
+
+    border-left-color:rgba(236,224,255,0.86);
+
+    filter:drop-shadow(0 0 7px rgba(183,156,255,0.74));
+}
+
+.audio-zone.playing::before{
+
+    transform:translate(-42%, -50%) scale(0.68);
+
+    opacity:0;
+}
+
+/* Invitation douce à lancer un set, uniquement lorsque la bulle est au repos. */
+.audio-zone::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-16%;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    opacity:0;
+
+    transform:scale(0.84);
+
+    will-change:transform, opacity;
+
+    animation:amaniteIdleMusicHalo 7.2s ease-in-out infinite;
+
+    transition:opacity 0.35s ease;
+}
+
+.day-bubble::after{
+
+    background:radial-gradient(circle, rgba(176,220,255,0.3) 0%, rgba(255,184,227,0.14) 38%, transparent 70%);
+}
+
+.night-bubble::after{
+
+    background:radial-gradient(circle, rgba(255,122,195,0.28) 0%, rgba(122,191,255,0.15) 40%, transparent 70%);
+}
+
+.audio-zone.playing::after{
+
+    animation:none;
+
+    opacity:0;
+}
+
+.audio-zone-2::after,
+.night-audio-2::after{
+
+    animation-delay:-3.6s;
+}
+
+@keyframes amaniteIdleMusicHalo{
+
+    0%, 100%{
+
+        opacity:0;
+        transform:scale(0.84);
+    }
+
+    42%{
+
+        opacity:0.48;
+        transform:scale(1.07);
+    }
+
+    62%{
+
+        opacity:0.16;
+        transform:scale(1.14);
+    }
+}
+
 /* ================= DAY AUDIO ===================== */
 
 .audio-zone-1{
@@ -1405,6 +1522,9 @@ body{
 .progress-1 .progress-fill,
 .progress-2 .progress-fill{
 
+    background:#A8D8FF;
+    box-shadow:0 0 14px #A8D8FF;
+
     animation:progressRGBDay 5s linear infinite;
 }
 
@@ -1412,6 +1532,9 @@ body{
 
 .night-progress-1 .progress-fill,
 .night-progress-2 .progress-fill{
+
+    background:#ff7ac3;
+    box-shadow:0 0 12px #ff7ac3;
 
     animation:progressRGBNight 5s linear infinite;
 }
