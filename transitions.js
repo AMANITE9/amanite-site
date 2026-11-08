@@ -60,7 +60,7 @@
 
                     fade.classList.remove("is-entering");
 
-                }, 1150);
+                }, 1950);
             });
         });
     }

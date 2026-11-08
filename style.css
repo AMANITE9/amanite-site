@@ -1787,7 +1787,7 @@ body{
     rgba(0,0,0,0.35),
     rgba(0,0,0,0.35)
     ),
-    url("images/transition.PNG");
+    url("images/transition.webp");
 
     background-size:cover;
 
@@ -1814,7 +1814,7 @@ body{
     inset:0;
 
     background:
-    url("images/transition.PNG");
+    url("images/transition.webp");
 
     background-size:contain;
 
@@ -1865,18 +1865,27 @@ body{
 }
 
 /* ARRIVÉE : la brume s'écarte une fois l'image de la page prête. */
+.fade-transition.is-entering{
+
+    transition:opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .fade-transition.is-entering.hidden::before{
 
     filter:blur(48px) brightness(0.46);
 
-    transform:scale(1.32);
+    transform:scale(1.16);
+
+    transition-duration:1.85s;
 }
 
 .fade-transition.is-entering.hidden::after{
 
-    transform:scale(1.16);
+    transform:scale(1.06);
 
     filter:blur(28px);
+
+    transition-duration:1.85s;
 }
 @media (max-width:768px){
 
