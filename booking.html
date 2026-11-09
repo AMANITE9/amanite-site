@@ -131,6 +131,14 @@
           class="booking-message"></textarea>
           
 
+            <button type="button"
+                    class="press-kit-bubble"
+                    aria-label="Ouvrir le press kit Amanite">
+                <img src="images/press-kit.webp"
+                     alt="Aperçu du press kit Amanite">
+                <span aria-hidden="true">PRESS<br>KIT</span>
+            </button>
+
             <!-- SEND ZONE -->
 
             <span class="whatsapp-mark"
@@ -157,6 +165,19 @@
     <div class="copy-toast"
          role="status"
          aria-live="polite">
+    </div>
+
+    <div class="press-kit-lightbox"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Press kit Amanite"
+         aria-hidden="true">
+        <button type="button"
+                class="press-kit-close"
+                aria-label="Fermer le press kit">×</button>
+        <img src="images/press-kit.webp"
+             class="press-kit-full"
+             alt="Press kit Amanite">
     </div>
 
 <script>
@@ -258,6 +279,42 @@ document.querySelectorAll(".contact-copy").forEach(button => {
 
         copyContact(button.dataset.copy, label);
     });
+});
+
+/* ================= PRESS KIT ================= */
+
+const pressKitBubble = document.querySelector(".press-kit-bubble");
+const pressKitLightbox = document.querySelector(".press-kit-lightbox");
+const pressKitClose = document.querySelector(".press-kit-close");
+
+function closePressKit(){
+
+    pressKitLightbox.classList.remove("is-open");
+    pressKitLightbox.setAttribute("aria-hidden", "true");
+}
+
+pressKitBubble.addEventListener("click", () => {
+
+    pressKitLightbox.classList.add("is-open");
+    pressKitLightbox.setAttribute("aria-hidden", "false");
+});
+
+pressKitClose.addEventListener("click", closePressKit);
+
+pressKitLightbox.addEventListener("click", event => {
+
+    if(event.target === pressKitLightbox){
+
+        closePressKit();
+    }
+});
+
+document.addEventListener("keydown", event => {
+
+    if(event.key === "Escape"){
+
+        closePressKit();
+    }
 });
 
 </script>

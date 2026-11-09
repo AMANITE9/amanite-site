@@ -1241,6 +1241,150 @@ body{
     pointer-events:auto;
 }
 
+/* PRESS KIT : bulle voisine de SEND, avec aperçu de l'affiche. */
+.press-kit-bubble{
+
+    position:absolute;
+
+    width:13%;
+    aspect-ratio:1/1;
+
+    left:69%;
+    top:39.8%;
+
+    display:grid;
+    place-items:center;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,237,205,0.68);
+    border-radius:50%;
+    padding:0;
+
+    background:rgba(55,21,81,0.82);
+
+    box-shadow:
+    0 0 14px rgba(255,207,247,0.34),
+    0 0 30px rgba(174,123,255,0.2);
+
+    cursor:pointer;
+
+    z-index:1001;
+
+    transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.press-kit-bubble img{
+
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+    object-position:center top;
+
+    filter:blur(2.5px) brightness(0.62) saturate(0.8);
+
+    transform:scale(1.16);
+}
+
+.press-kit-bubble span{
+
+    position:relative;
+    z-index:1;
+
+    color:rgba(255,245,226,0.94);
+
+    font:400 clamp(10px, 1.6vw, 14px)/1.12 "Palatino Linotype", Palatino, serif;
+    letter-spacing:0.11em;
+    text-align:center;
+
+    text-shadow:
+    0 0 5px rgba(255,222,181,0.82),
+    0 0 12px rgba(195,140,255,0.58);
+
+    pointer-events:none;
+}
+
+.press-kit-bubble:active{
+
+    transform:scale(0.94);
+
+    filter:brightness(1.12);
+}
+
+.press-kit-bubble:focus-visible{
+
+    outline:2px solid rgba(255,255,255,0.9);
+    outline-offset:4px;
+}
+
+.press-kit-lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    padding:max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+
+    background:rgba(8,4,15,0.86);
+
+    backdrop-filter:blur(12px);
+
+    z-index:1000002;
+}
+
+.press-kit-lightbox.is-open{
+
+    display:flex;
+}
+
+.press-kit-full{
+
+    max-width:92vw;
+    max-height:88dvh;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 0 36px rgba(255,202,246,0.24),
+    0 0 70px rgba(163,112,255,0.16);
+}
+
+.press-kit-close{
+
+    position:absolute;
+
+    top:max(14px, env(safe-area-inset-top));
+    right:max(18px, env(safe-area-inset-right));
+
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:50%;
+
+    background:rgba(255,245,226,0.12);
+    color:rgba(255,245,226,0.94);
+
+    font:300 30px/1 "Palatino Linotype", Palatino, serif;
+
+    box-shadow:0 0 16px rgba(255,222,181,0.24);
+
+    cursor:pointer;
+}
+
 /* WHATSAPP : PICTOGRAMME DANS LA BULLE SEND */
 
 .whatsapp-mark{
