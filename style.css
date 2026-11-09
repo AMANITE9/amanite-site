@@ -1275,6 +1275,8 @@ body{
     transform 0.18s ease,
     box-shadow 0.18s ease,
     filter 0.18s ease;
+
+    animation:pressKitRgbGlow 5.5s linear infinite;
 }
 
 .press-kit-bubble img{
@@ -1324,6 +1326,41 @@ body{
 
     outline:2px solid rgba(255,255,255,0.9);
     outline-offset:4px;
+}
+
+@keyframes pressKitRgbGlow{
+
+    0%, 100%{
+
+        border-color:rgba(255,122,195,0.88);
+        box-shadow:
+        0 0 12px rgba(255,122,195,0.56),
+        0 0 28px rgba(255,122,195,0.26);
+    }
+
+    25%{
+
+        border-color:rgba(122,191,255,0.9);
+        box-shadow:
+        0 0 12px rgba(122,191,255,0.56),
+        0 0 28px rgba(122,191,255,0.26);
+    }
+
+    50%{
+
+        border-color:rgba(122,255,212,0.88);
+        box-shadow:
+        0 0 12px rgba(122,255,212,0.54),
+        0 0 28px rgba(122,255,212,0.24);
+    }
+
+    75%{
+
+        border-color:rgba(198,140,255,0.9);
+        box-shadow:
+        0 0 12px rgba(198,140,255,0.56),
+        0 0 28px rgba(198,140,255,0.26);
+    }
 }
 
 .press-kit-lightbox{
